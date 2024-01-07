@@ -1,99 +1,159 @@
 #include <iostream>
-#include <vector>
+
 #include <iomanip>
+#include <algorithm>
 
-using namespace std;
 
-void displayMatrix(const vector<vector<int>>& matrix) {
-    for (size_t i = 0; i < matrix.size(); ++i) {
-        cout << "| D" << (i + 1) << " ";
-        for (size_t j = 0; j < matrix[i].size(); ++j) {
-            cout << setw(3) << matrix[i][j] << " ";
-        }
-        cout << "|\n";
-    }
+template <std::size_t Rows, std::size_t Cols>
+int getIndex(int(&array)[Rows][Cols]){
+    return Rows;
 }
+
+//---------------------------------- V a r i a b l e s ---------------------------------
+int row = 6;
+int col = 7;
+int data[6][7] = {{0, 0, 0, 0, 0, 0, 0},
+                  {0, 0, 0, 0, 0, 0, 0},
+                  {0, 0, 0, 0, 0, 0, 0},
+                  {0, 0, 0, 0, 0, 0, 0},
+                  {0, 0, 0, 0, 0, 0, 0},
+                  {0, 0, 0, 0, 0, 0, 0},
+                  };
+int threshold = 30;
+//--------------------------------------------------------------------------------------
 
 int main() {
-    int rows_d = 8; // Rows for D
-    int cols = 8;   // Columns for R1 to R8
 
-    // Initialize matrices for each set with zeros
-    vector<vector<int>> matrix1(rows_d, vector<int>(cols, 0));
-    vector<vector<int>> matrix2(rows_d, vector<int>(cols, 0));
-    vector<vector<int>> matrix3(rows_d, vector<int>(cols, 0));
+int raw1[][2] = {{0, 0}, {100, 98}, {99, 99}, {100, 99}, {101, 99}, {98, 100}, {99, 100}, {100, 100}, {101, 100}, {102, 100}, {97, 101}, {98, 101}, {99, 101}, {100, 101}, {101, 101}, {102, 101}, {103, 101}, {98, 102}, {99, 102}, {100, 102}, {101, 102}, {102, 102}, {99, 103}, {100, 103}, {101, 103}, {100, 104}, {600, 197}, {599, 198}, {600, 198}, {601, 198}, {598, 199}, {599, 199}, {600, 199}, {601, 199}, {602, 199}, {597, 200}, {598, 200}, {599, 200}, {600, 200}, {601, 200}, {602, 200}, {603, 200}, {598, 201}, {599, 201}, {600, 201}, {601, 201}, {602, 201}, {599, 202}, {600, 202}, {601, 202}, {600, 203}, {300, 297}, {299, 298}, {300, 298}, {301, 298}, {298, 299}, {299, 299}, {300, 299}, {301, 299}, {302, 299}, {297, 300}, {298, 300}, {299, 300}, {300, 300}, {301, 300}, {302, 300}, {303, 300}, {298, 301}, {299, 301}, {300, 301}, {301, 301}, {302, 301}, {299, 302}, {300, 302}, {301, 302}, {300, 303}, {400, 497}, {399, 498}, {400, 498}, {401, 498}, {398, 499}, {399, 499}, {400, 499}, {401, 499}, {402, 499}, {397, 500}, {398, 500}, {399, 500}, {400, 500}, {401, 500}, {402, 500}, {403, 500}, {398, 501}, {399, 501}, {400, 501}, {401, 501}, {402, 501}, {399, 502}, {400, 502}, {401, 502}, {400, 503}};
+int raw2[][2] = {{0, 0}};
+int raw3[][2] = {{0, 0}};
 
-    // Input data for three sets in the form of (x, y)
-    vector<vector<pair<int, int>>> allCoordinates = {
-        // Set 1
-        {{0, 0}, {400, 97}, {399, 98}, {400, 98}, {401, 98}, {398, 99}, {399, 99}, {400, 99}, {401, 99}, {402, 99}, {397, 100}, {398, 100}, {399, 100}, {400, 100}, {401, 100}, {402, 100}, {403, 100}, {398, 101}, {399, 101}, {400, 101}, {401, 101}, {402, 101}, {399, 102}, {400, 102}, {401, 102}, {400, 103}},
-        // Set 2
-        {{0, 0}, {300, 397}, {299, 398}, {300, 398}, {301, 398}, {298, 399}, {299, 399}, {300, 399}, {301, 399}, {302, 399}, {297, 400}, {298, 400}, {299, 400}, {300, 400}, {301, 400}, {302, 400}, {303, 400}, {298, 401}, {299, 401}, {300, 401}, {301, 401}, {302, 401}, {299, 402}, {300, 402}, {301, 402}, {300, 403}},
-        // Set 3
-        {{0, 0}, {99, 298}, {100, 298}, {101, 298}, {98, 299}, {99, 299}, {100, 299}, {101, 299}, {102, 299}, {98, 300}, {99, 300}, {100, 300}, {101, 300}, {102, 300}, {98, 301}, {99, 301}, {100, 301}, {101, 301}, {102, 301}, {99, 302}, {100, 302}, {101, 302}, {499, 498}, {500, 498}, {501, 498}, {498, 499}, {499, 499}, {500, 499}, {501, 499}, {502, 499}, {498, 500}, {499, 500}, {500, 500}, {501, 500}, {502, 500}, {498, 501}, {499, 501}, {500, 501}, {501, 501}, {502, 501}, {499, 502}, {500, 502}, {501, 502}}
-    };
+//---------------------- P r o c e s s   &   a p p e n d   r a w   d a t a -------------------------------
+//int raw1_i = sizeof(raw1) / sizeof(raw1[0]);              // manually get dimension1 index size
+//int raw2_i = sizeof(raw2) / sizeof(raw2[0]);              // manually get dimension1 index size
+//int raw3_i = sizeof(raw3) / sizeof(raw3[0]);              // manually get dimension1 index size
+//std::cout << "raw1 index: " << getIndex(raw1) << std::endl;
+//std::cout << "raw2 index: " << getIndex(raw2) << std::endl;
+//std::cout << "raw3 index: " << getIndex(raw3) << std::endl;
 
-    // Loop through each set of coordinates
-    for (size_t setIndex = 0; setIndex < allCoordinates.size(); ++setIndex) {
-        const vector<pair<int, int>>& coordinates = allCoordinates[setIndex];
+int data1_Index = getIndex(raw1);
+int data2_Index = getIndex(raw2);
+int data3_Index = getIndex(raw3);
 
-        // Choose the appropriate matrix based on the set index
-        vector<vector<int>>& currentMatrix = (setIndex == 0) ? matrix1 : (setIndex == 1) ? matrix2 : matrix3;
+int data1[getIndex(raw1)][2];                   // declaring data1
+int data2[getIndex(raw2)][2];                   // declaring data2
+int data3[getIndex(raw3)][2];                   // declaring data3
 
-        // Update matrix based on input coordinates
-        for (auto& coordinate : coordinates) {
-            // Calculate row and column indices for D1 to D8
-            int row = coordinate.second / 100;
-            int col = coordinate.first / 100;
-
-            // Ensure the row and column indices are within bounds
-            if (row >= 0 && row < rows_d && col >= 0 && col < cols) {
-                currentMatrix[row][col]++;
-            }
-        }
+for (int i=0;i<getIndex(raw1);i++){
+    for(int j=0;j<2;j++){
+        data1[i][j] = raw1[i][j];
     }
-
-    // Display the matrix headers
-    cout << "|   | R1  R2  R3  R4  R5  R6  R7  R8 |\n";
-
-    // Display the combined matrix with set indicators
-    for (int i = 0; i < rows_d; ++i) {
-        cout << "| D" << (i + 1) << " ";
-        for (int j = 0; j < cols; ++j) {
-            // Display 1, 2, or 3 based on which set has data at this position
-            if (matrix1[i][j] > 0) {
-                cout << setw(3) << 1 << " ";
-            } else if (matrix2[i][j] > 0) {
-                cout << setw(3) << 2 << " ";
-            } else if (matrix3[i][j] > 0) {
-                cout << setw(3) << 3 << " ";
-            } else {
-                cout << setw(3) << 0 << " ";
-            }
-        }
-        cout << "|\n";
+}
+for (int i=0;i<getIndex(raw2);i++){
+    for(int j=0;j<2;j++){
+        data2[i][j] = raw2[i][j];
     }
+}
+for (int i=0;i<getIndex(raw3);i++){
+    for(int j=0;j<2;j++){
+        data3[i][j] = raw3[i][j];
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // Display Coordinate Information
+//---------------------------------- s o r t   b y   x - c o o r d i n a t e   i n   a s c e n d i n g   o r d e r ---------------------------------
+//std::sort(&data1[0][0], &data1[0][0] + data1_Index * 2, [](int a, int b) {return a < b;});
+//std::sort(&data2[0][0], &data2[0][0] + data2_Index * 2, [](int a, int b) {return a < b;});
+//std::sort(&data3[0][0], &data3[0][0] + data3_Index * 2, [](int a, int b) {return a < b;});
+
+for(int i=0;i<data1_Index;i++){
+    for(int i=0;i<data1_Index;i++){
+        if(data1[i+1][0]<data1[i][0]){
+            int tempdata[2];
+            tempdata[0]=data1[i][0];
+            tempdata[1]=data1[i][1];
+
+            data1[i][0]=data1[i+1][0];
+            data1[i][1]=data1[i+1][1];
     
-    cout << "\nCoordinate Information:\n";
-    cout << "1 : raw1.txt" << "\n";
-    cout << "2 : raw2.txt" << "\n";
-    cout << "3 : raw3.txt" << "\n";
-    cout << "D" << " : " << "y coordinates" << "\n";
-    cout << "R" << " : " << "x coordinates" << "\n";
+            data1[i+1][0]=tempdata[0];
+            data1[i+1][1]=tempdata[1];
+        }
+}}
+for(int i=0;i<data2_Index;i++){
+    for(int i=0;i<data2_Index;i++){
+        if(data2[i+1][0]<data2[i][0]){
+            int tempdata[2];
+            tempdata[0]=data2[i][0];
+            tempdata[1]=data2[i][1];
 
-    for (int i = 0; i < rows_d; ++i) {
-        cout << "D" << (i + 1) << " : " << (i * 100) << "-" << ((i + 1) * 100 - 1) << "\n";
+            data2[i][0]=data2[i+1][0];
+            data2[i][1]=data2[i+1][1];
+    
+            data2[i+1][0]=tempdata[0];
+            data2[i+1][1]=tempdata[1];
+        }
+}}
+for(int i=0;i<data3_Index;i++){
+    for(int i=0;i<data3_Index;i++){
+        if(data3[i+1][0]<data3[i][0]){
+            int tempdata[2];
+            tempdata[0]=data3[i][0];
+            tempdata[1]=data3[i][1];
+
+            data3[i][0]=data3[i+1][0];
+            data3[i][1]=data3[i+1][1];
+    
+            data3[i+1][0]=tempdata[0];
+            data3[i+1][1]=tempdata[1];    
+    }
+}}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------ D i s p l a y   d a t a   a r r a y -------------------------------------------
+for(int i=0;i<getIndex(raw1);i++){
+    for(int j=0;j<2;j++){
+        std::cout << data1[i][j] << " ";
+    }
+    std::cout << "\n";
+}
+std::cout << "\n data2" << std::endl;
+for(int i=0;i<getIndex(raw2);i++){
+    for(int j=0;j<2;j++){
+        std::cout << data2[i][j] << " ";
+    }
+    std::cout << "\n";
+}
+std::cout << "\n data3" << std::endl;
+for(int i=0;i<getIndex(raw3);i++){
+    for(int j=0;j<2;j++){
+        std::cout << data3[i][j] << " ";
+    }
+    std::cout << "\n";
+}std::cout << "\n";
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+int difference = 0;
+
+int xcoord[7] = {0, 0, 0, 0, 0, 0, 0};
+int placeIndex = 0;
+for(int i=0;i<data1_Index;i++){
+    if(!data1[i][0]){} //filter out (0, 0)
+    else if(data1[i+1][0]-data1[i][0]<threshold){
+        xcoord[placeIndex]+=data1[i][0];
+    }
+    else{
+        placeIndex++;
+        difference++;
     }
 
-    for (int i = 0; i < cols; ++i) {
-        cout << "R" << (i + 1) << " : " << (i * 100) << "-" << ((i + 1) * 100 - 1) << "\n";
-    }
-
-    return 0;
 }
 
-
+for(int i=0;i<7;i++){
+    std::cout << xcoord[i] << std::endl;
+}
+    std::cout << difference << " x-coordinates found!";
+    return 0;
+}
 
 
