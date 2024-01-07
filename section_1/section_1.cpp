@@ -1,54 +1,79 @@
-//welcome...
 #include <iostream>
 #include <fstream>
-#include <sstream>
 using namespace std;
 
-int main(){
-char line;
-string temp = "okay";
-//tuple<int , int> data;
-int number, i=0, j=0, k=0, repeat =0, raw1[1000][2], change;
+void readTextFiles(const string& folderPath, int set) {
+    char line;
+    string temp ; 
+    int number, i=0, j=0, k=0, repeat =0, raw[3][5000][2], change;
 
-string filePath = "C:\\cpp\\aaaaa\\set 2\\raw1.txt"; 
-ifstream input_file(filePath);
-if (!input_file.is_open()) {
-    cerr << "Could not open the file - '" << filePath << "'" << endl;
-    return EXIT_FAILURE;
-}
-//input data
-input_file >> temp;
-input_file >> line;
+    ifstream input_file(folderPath);
+        //input symbol data
+        input_file >> temp;
+        input_file >> line;
+        //input data to array
+        while (input_file >> line){  
+            if (input_file >> number){    
+                raw[set] [i][j] = number;
 
-while (input_file >> line){  
-    if (input_file >> number){    
-        raw1 [i][j] = number;
-
-        if (j == 0){
-            j+=1; 
+                if (j == 0){
+                    j = 1; 
+                }
+                else {
+                    j = 0;
+                    i++;
+                    input_file >> temp;
+                    repeat ++;
+                }
+            }
         }
-        else {
-            j-=1;
-            i++;
-            input_file >> temp;
-            repeat ++;
+        input_file.close();
+
+        //print collected data
+        cout << "\nInput data("<<set+1<<")"<<endl;
+        cout << "[";
+        for (i=0 ; i < repeat ; i++){
+            j=0;
+            cout << "(" <<raw[set] [i][j] << " , " ;
+            j = 1;
+            cout << raw[set] [i][j] << ") " ; 
+
         }
-    }
-}
-input_file.close();
+        cout << "]"<<endl;
+        }
 
-//print collected data
-cout << "[";
-for (i=0 ; i < repeat ; i++){
-    j=0;
-    cout << "(" <<raw1 [i][j] << " , " ;
-    while (j == 0){
-        j = 1;
-        cout << raw1 [i][j] << ") " ; 
-        
-    }
-}
-cout << "]";
 
-return 0;
+int main() {
+    string filePath, newfilepath;
+    
+    do {
+        cout << "\nPlease enter reference folder location.\n\nEg : \"C:\\This PC\\EEE\\Reference\\Set 5\"\nFile location : ";
+        getline(cin,filePath);
+        newfilepath = filePath + "\\raw1.txt";
+        ifstream input_file(newfilepath);
+
+        //to check either file location is valid or not
+        if(input_file.is_open()){
+            break;
+        }
+        else{
+            cerr << "\nFolder don't have text file in it - '" << filePath << "'\nPlease try again.\n";
+        }
+    }while (true);
+
+    //set the array number for each raw data
+    for (int set = 0 ; set < 3 ; set++){
+        if (set == 0){
+            newfilepath = filePath + "\\raw1.txt";
+        }
+        else if (set == 1){
+            newfilepath = filePath + "\\raw2.txt";
+        }
+        else{
+            newfilepath = filePath + "\\raw3.txt";
+        }
+        //read and save data in array form
+        readTextFiles(newfilepath, set);
+    }
+    return 0;
 }
