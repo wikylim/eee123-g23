@@ -59,7 +59,7 @@ for(int i=0;i<size;i++){
 }
 
 void displayMatrix(int _data[6][6], char _title[], bool toggleClear){
-    cout << "------------- M a t r i x   d a t a   f o r   " << _title << " -----------------------\n" << endl;
+    cout << "------------- M a t r i x   d a t a   f o r   " << _title << " -------------------\n" << endl;
     cout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
     for(int j=0;j<6;j++){
         if(j<4){
@@ -87,6 +87,7 @@ void setData(int _data[6][6], int target){
 }
 
 void closing(){
+    cout << "\n---------------------------------------------------------------------------\n";
     cout << "\n";
     cout << "                       T h a n k   y o u" << endl;
     cout << "\n                 H a v e   a   g o o d   d a y   : ) \n" << endl;
@@ -211,7 +212,27 @@ void extractData(const string& fileName, int array[][2], int count, int maxPoint
     inputFile.close();
 }
 
+void writeDataToFile(const char* fileName, int data[][6]) {
+    // Open the file
+    std::ofstream outputFile(fileName);
 
+    // Check if the file is open
+    if (!outputFile.is_open()) {
+        std::cerr << "Error opening the file: " << fileName << endl;
+        return;
+    }
+
+    // Write the array contents to the file
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            outputFile << data[i][j] << " ";
+        }
+        outputFile << endl;
+    }
+
+    // Close the file
+    outputFile.close();
+}
 
 
 

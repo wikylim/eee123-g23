@@ -936,8 +936,18 @@ for(int i=0;i<6;i++){
 
 displayMatrix(data, "F i n a l", 1);
 
+
+
+    writeDataToFile("output.txt", data);
+
+    cout << "\nData has been written to output.txt" << endl;
+
 closing();
+
+
 return 0;
+
+
 
 }
 
