@@ -90,6 +90,7 @@ void closing(){
     cout << "\n";
     cout << "                       T h a n k   y o u" << endl;
     cout << "\n                 H a v e   a   g o o d   d a y   : ) \n" << endl;
+    cout << "\n---------------------------------------------------------------------------\n";
 }
 
 int countContiguousNumbers(const string& filename) {
@@ -167,7 +168,7 @@ void readTextFiles(const string& folderPath, int set) {
         }
 
 
-void extractData(const char* fileName, int array[][2], int count, int maxPoints) {
+void extractData(const string& fileName, int array[][2], int count, int maxPoints) {
     // Open the file
     std::ifstream inputFile(fileName);
 

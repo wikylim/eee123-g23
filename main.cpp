@@ -44,6 +44,7 @@ string file1 = "raw1.txt";
 string file2 = "raw2.txt";
 string file3 = "raw3.txt";
 
+
 int data[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
@@ -51,7 +52,6 @@ int data[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
                   };
-
 
 int dataA[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
@@ -84,6 +84,8 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
 
     // s t a r t   h e r e . . .
 
+//test data
+
 //int raw1[][2] = {{0, 0}};
 //int raw1[][2] = {{0, 0}, {100, 98}, {99, 99}, {100, 99}, {101, 99}, {98, 100}, {99, 100}, {100, 100}, {101, 100}, {102, 100}, {97, 101}, {98, 101}, {99, 101}, {100, 101}, {101, 101}, {102, 101}, {103, 101}, {98, 102}, {99, 102}, {100, 102}, {101, 102}, {102, 102}, {99, 103}, {100, 103}, {101, 103}, {100, 104}, {600, 197}, {599, 198}, {600, 198}, {601, 198}, {598, 199}, {599, 199}, {600, 199}, {601, 199}, {602, 199}, {597, 200}, {598, 200}, {599, 200}, {600, 200}, {601, 200}, {602, 200}, {603, 200}, {598, 201}, {599, 201}, {600, 201}, {601, 201}, {602, 201}, {599, 202}, {600, 202}, {601, 202}, {600, 203}, {300, 297}, {299, 298}, {300, 298}, {301, 298}, {298, 299}, {299, 299}, {300, 299}, {301, 299}, {302, 299}, {297, 300}, {298, 300}, {299, 300}, {300, 300}, {301, 300}, {302, 300}, {303, 300}, {298, 301}, {299, 301}, {300, 301}, {301, 301}, {302, 301}, {299, 302}, {300, 302}, {301, 302}, {300, 303}, {400, 497}, {399, 498}, {400, 498}, {401, 498}, {398, 499}, {399, 499}, {400, 499}, {401, 499}, {402, 499}, {397, 500}, {398, 500}, {399, 500}, {400, 500}, {401, 500}, {402, 500}, {403, 500}, {398, 501}, {399, 501}, {400, 501}, {401, 501}, {402, 501}, {399, 502}, {400, 502}, {401, 502}, {400, 503}};
 //int raw1[][2] = {{0, 0}, {300, 197}, {600, 197}, {299, 198}, {300, 198}, {301, 198}, {599, 198}, {600, 198}, {601, 198}, {298, 199}, {299, 199}, {300, 199}, {301, 199}, {302, 199}, {598, 199}, {599, 199}, {600, 199}, {601, 199}, {602, 199}, {297, 200}, {298, 200}, {299, 200}, {300, 200}, {301, 200}, {302, 200}, {303, 200}, {597, 200}, {598, 200}, {599, 200}, {600, 200}, {601, 200}, {602, 200}, {603, 200}, {298, 201}, {299, 201}, {300, 201}, {301, 201}, {302, 201}, {598, 201}, {599, 201}, {600, 201}, {601, 201}, {602, 201}, {299, 202}, {300, 202}, {301, 202}, {599, 202}, {600, 202}, {601, 202}, {300, 203}, {600, 203}, {500, 297}, {499, 298}, {500, 298}, {501, 298}, {498, 299}, {499, 299}, {500, 299}, {501, 299}, {502, 299}, {497, 300}, {498, 300}, {499, 300}, {500, 300}, {501, 300}, {502, 300}, {503, 300}, {498, 301}, {499, 301}, {500, 301}, {501, 301}, {502, 301}, {499, 302}, {500, 302}, {501, 302}, {500, 303}, {200, 397}, {199, 398}, {200, 398}, {201, 398}, {198, 399}, {199, 399}, {200, 399}, {201, 399}, {202, 399}, {197, 400}, {198, 400}, {199, 400}, {200, 400}, {201, 400}, {202, 400}, {203, 400}, {198, 401}, {199, 401}, {200, 401}, {201, 401}, {202, 401}, {199, 402}, {200, 402}, {201, 402}, {200, 403}, {200, 598}, {199, 599}, {200, 599}, {201, 599}, {198, 600}, {199, 600}, {200, 600}, {201, 600}, {202, 600}, {197, 601}, {198, 601}, {199, 601}, {200, 601}, {201, 601}, {202, 601}, {203, 601}, {198, 602}, {199, 602}, {200, 602}, {201, 602}, {202, 602}, {199, 603}, {200, 603}, {201, 603}, {200, 604}};
@@ -111,30 +113,74 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
 //int raw3[][2] = {{0, 0}, {99, 298}, {100, 298}, {101, 298}, {98, 299}, {99, 299}, {100, 299}, {101, 299}, {102, 299}, {98, 300}, {99, 300}, {100, 300}, {101, 300}, {102, 300}, {98, 301}, {99, 301}, {100, 301}, {101, 301}, {102, 301}, {99, 302}, {100, 302}, {101, 302}};
 
 //----------------------------------------- f e t c h   r a w   d a t a   f i l e s -----------------------------------------------
+
+    string filePath;
+
+    cout << "\nPlease enter reference folder location.\n\nEg : \"C:\\This PC\\EEE\\Reference\\Set 5\"";
+    do {
+        file1 = "raw1.txt";
+        file2 = "raw2.txt";
+        file3 = "raw3.txt";
+        cout << "\nFile location : ";
+        std::getline(std::cin,filePath);
+        bool local = (filePath!="LOCAL") && (filePath!="local") && (filePath!="Local");
+        if(local){
+            file1 = filePath + "\\raw1.txt";
+            file2 = filePath + "\\raw2.txt";
+            file3 = filePath + "\\raw3.txt";
+        }
+        else{cout << "\nSearching local folder..." << endl;}
+        
+        std::ifstream input_file1(file1);
+        std::ifstream input_file2(file2);
+        std::ifstream input_file3(file3);
+        //to check either file location is valid or not
+        if(input_file1.is_open()&&input_file2.is_open()&&input_file3.is_open()){
+            break;
+        }
+        if(!input_file1.is_open()){
+                cout << "   Missing raw1.txt!" << endl;
+            }
+        if(!input_file2.is_open()){
+                cout << "   Missing raw2.txt!" << endl;
+            }
+        if(!input_file3.is_open()){
+                cout << "   Missing raw3.txt!" << endl;
+        }
+        if(!local){
+            std::cerr << "\nUnable to find data in local folder\nincomplete/missing data, try again.\n";
+        }
+        else{
+            std::cerr << "\nUnable to find data in specified folder - '" << filePath << "'\nincomplete/missing data, try again.\n";
+        }
+        
+    }
+    while (true);
+
     int giveIndex;
     giveIndex = (countContiguousNumbers(file1)-1)/2;            // file contains raw1, it counts the number, so subtract the numbers of number read by 1, xy coordinates are fixed by 2, so divide by 2 to get the number of data sets, in this case, the array index size
     int data1_Index = giveIndex;
-    cout << "give Index 1 : " << giveIndex << endl;
+    //cout << "give Index 1 : " << giveIndex << endl;
     int raw1[giveIndex][2];
     int count1 = 0;
     // Extract data from raw1.txt
-    extractData("raw1.txt", raw1, count1, giveIndex);
+    extractData(file1, raw1, count1, giveIndex);
 
     giveIndex = (countContiguousNumbers(file2)-1)/2;
     int data2_Index = giveIndex;
-    cout << "give Index 2 : " << giveIndex << endl;
+    //cout << "give Index 2 : " << giveIndex << endl;
     int raw2[giveIndex][2];
     int count2 = 0;
     // Extract data from raw2.txt
-    extractData("raw2.txt", raw2, count2, giveIndex);
+    extractData(file2, raw2, count2, giveIndex);
 
     giveIndex = (countContiguousNumbers(file3)-1)/2;
     int data3_Index = giveIndex;
-    cout << "give Index 3 : " << giveIndex << endl;
+    //cout << "give Index 3 : " << giveIndex << endl;
     int raw3[giveIndex][2];
     int count3 = 0;    
     // Extract data from raw3.txt
-    extractData("raw3.txt", raw3, count3, giveIndex);
+    extractData(file3, raw3, count3, giveIndex);
 
 
 /*
