@@ -48,7 +48,7 @@ string file3 = "raw3.txt";
 string outputTxt = "output.txt";
 
 // for output
-
+bool _toggleClear = 0;              // clean mode
 
 int data[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
@@ -964,42 +964,43 @@ vectorDataDisplay();
     oout << "\n\n";
 
     // Display preliminary report
-    oout << "--------- P R E L I M I N A R Y     R E P O R T -------------" << endl;
+    oout << "-----------------------------------------------------------------" << endl;
+    oout << "--------- P R E L I M I N A R Y     R E P O R T -----------------" << endl;
     if(data1_Index>0){
-    oout << "---------------------- R E P O R T   1 ----------------------" << endl;
+    oout << "---------------------- R E P O R T   1 --------------------------" << endl;
     oout << "number of indexes found: " << data1_Index << endl;
-    oout << "\n{ " ;
+    oout << "[\t";
     for(int i=0;i<6;i++){
     oout << xcoord1[i] << "\t";
-    }oout << "}" << endl;
-    oout << "\n" << difference[0] << " distinct x-coordinates found!" << endl;
+    }oout << "]" << endl;
+    oout << " " << difference[0] << " distinct x-coordinates found!" << endl;
     }
     else{oout << "Empty data! No coordinates found!" << endl;}
-    oout << "-------------------------------------------------------------\n" << endl;
+    oout << "-----------------------------------------------------------------\n" << endl;
 
     if(data2_Index>0){
     oout << "---------------------- R E P O R T   2 ----------------------" << endl;
     oout << "number of indexes found: " << data2_Index << endl;
-    oout << "\n{ " ;
+    oout << "[\t";
     for(int i=0;i<6;i++){
     oout << xcoord2[i] << "\t";
-    }oout << "}" << endl;
-    oout << "\n" << difference[1] << " distinct x-coordinates found!" << endl;
+    }oout << "]" << endl;
+    oout << " " << difference[1] << " distinct x-coordinates found!" << endl;
     }
     else{oout << "Empty data! No coordinates found!" << endl;}
-    oout << "-------------------------------------------------------------\n" << endl;
+    oout << "-----------------------------------------------------------------\n" << endl;
 
     if(data3_Index>0){
     oout << "---------------------- R E P O R T   3 ----------------------" << endl;
     oout << "number of indexes found: " << data3_Index << endl;
-    oout << "\n{ " ;
+    oout << "[\t";
     for(int i=0;i<6;i++){
     oout << xcoord3[i] << "\t";
-    }oout << "}" << endl;
-    oout << "\n" << difference[2] << " distinct x-coordinates found!" << endl;
+    }oout << "]" << endl;
+    oout << " " << difference[2] << " distinct x-coordinates found!" << endl;
     }
     else{oout << "Empty data! No coordinates found!" << endl;}
-    oout << "-------------------------------------------------------------\n" << endl;
+    oout << "-----------------------------------------------------------------\n" << endl;
 
     // Displaying y-coordinates
     oout << "\n-----------------------------------------------------------------" << endl;
@@ -1086,11 +1087,11 @@ vectorDataDisplay();
     oout << "\n\n";
 
     // Display for Matrix form
-    bool _toggleClear = 1;
-    oout << "------------------------ M a t r i x   D i s p l a y ------------------------" << endl;
+    oout << "------------------ M a t r i x   D i s p l a y ------------------" << endl;
     oout << "Clean mode: ";
     if(_toggleClear){oout << "ON";}else{oout << "OFF";}oout << "\n\n";
-    oout << "------------- M a t r i x   d a t a   f o r   d a t a   1 -------------------\n" << endl;
+    oout << "------- M a t r i x   d a t a   f o r   d a t a   1 -------------\n";
+    oout << "___________________________________________________" << endl;
     oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
     for(int j=0;j<6;j++){
         if(j<4){
@@ -1102,9 +1103,11 @@ vectorDataDisplay();
             else{oout << dataA[j][i] << "\t";}
         }
         oout << "\n";
-    }
-    oout << "\n-----------------------------------------------------------------------------\n";
-    oout << "------------- M a t r i x   d a t a   f o r   d a t a   2 -------------------\n" << endl;
+    }   oout << "_________________________________________________________________" << endl;
+    //oout << "\n-----------------------------------------------------------------------------\n";
+
+    oout << "------- M a t r i x   d a t a   f o r   d a t a   2 -------------\n";
+    oout << "___________________________________________________" << endl;
     oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
     for(int j=0;j<6;j++){
         if(j<4){
@@ -1116,9 +1119,11 @@ vectorDataDisplay();
             else{oout << dataB[j][i] << "\t";}
         }
         oout << "\n";
-    }
-    oout << "\n-----------------------------------------------------------------------------\n";
-    oout << "------------- M a t r i x   d a t a   f o r   d a t a   3 -------------------\n" << endl;
+    }   oout << "_________________________________________________________________" << endl;
+    //oout << "\n-----------------------------------------------------------------------------\n";
+
+    oout << "------- M a t r i x   d a t a   f o r   d a t a   3 -------------\n";
+    oout << "___________________________________________________" << endl;
     oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
     for(int j=0;j<6;j++){
         if(j<4){
@@ -1130,10 +1135,11 @@ vectorDataDisplay();
             else{oout << dataC[j][i] << "\t";}
         }
         oout << "\n";
-    }
-    oout << "\n-----------------------------------------------------------------------------\n";
+    }   oout << "_________________________________________________________________" << endl;
+   // oout << "\n-----------------------------------------------------------------------------\n";
 
-    oout << "----------------------- F i n a l   M a t r i x -----------------------------\n" << endl;
+    oout << "----------------- F i n a l   M a t r i x -----------------------\n";
+    oout << "___________________________________________________" << endl;
     oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
     for(int j=0;j<6;j++){
         if(j<4){
@@ -1145,16 +1151,18 @@ vectorDataDisplay();
             else{oout << data[j][i] << "\t";}
         }
         oout << "\n";
-    }
-    oout << "\n-----------------------------------------------------------------------------\n";
-    oout << "\n\n";
+    }   oout << "_________________________________________________________________" << endl;
+    //oout << "\n-----------------------------------------------------------------------------\n";
+    oout << "\n";
 
     // bye
-    oout << "\n-----------------------------------------------------------------------------\n";
+
+    oout << "\t\tE N D   O F   R E P O R T" << endl;
+    oout << "\n-----------------------------------------------------------------\n";
     oout << "\n";
-    oout << "                         T h a n k   y o u" << endl;
-    oout << "\n                   H a v e   a   g o o d   d a y   : ) \n" << endl;
-    oout << "\n-----------------------------------------------------------------------------\n";
+    oout << "                   T h a n k   y o u" << endl;
+    oout << "\n             H a v e   a   g o o d   d a y   : ) \n" << endl;
+    oout << "\n-----------------------------------------------------------------\n";
     
 
     // quick display
