@@ -1,5 +1,6 @@
 // welcome...
 #include <iostream>
+#include <vector>
 #include <string>
 #include <fstream>
 #include <cctype>
@@ -7,13 +8,14 @@
 #define cout std::cout
 #define endl std::endl
 #define string std::string
+#define vector std::vector
 
-void _sort(int arr[], int size);
+/*void _sort(int arr[], int size);
 void appendMatrix(int arr[], int size, int xloc, int _data[6][6]);
 void displayMatrix(int _data[6][6], char _title[], bool toggleClear);
 void copyData(int arr1[][2], int rawSize, int rawArr[][2]);
 void setData(int _data[6][6], int target);
-void closing();
+void closing();*/
 
 template <std::size_t Rows, std::size_t Cols>
 int getIndex(int(&array)[Rows][Cols]){
@@ -21,6 +23,53 @@ int getIndex(int(&array)[Rows][Cols]){
 }
 
 //----------------------------------------------------------------------------------------------
+
+void inputFunc(string& _file1, string& _file2, string& _file3){
+    string filePath;
+
+    cout << "\nPlease enter reference folder location.\n\nEg : \"C:\\This PC\\EEE\\Reference\\Set 5\"";
+    do {
+        _file1 = "raw1.txt";
+        _file2 = "raw2.txt";
+        _file3 = "raw3.txt";
+        cout << "\nFile location : ";
+        std::getline(std::cin,filePath);
+        bool local = (filePath!="LOCAL") && (filePath!="local") && (filePath!="Local");
+        if(local){
+            _file1 = filePath + "\\raw1.txt";
+            _file2 = filePath + "\\raw2.txt";
+            _file3 = filePath + "\\raw3.txt";
+        }
+        else{cout << "\nSearching local folder..." << endl;}
+        
+        std::ifstream input_file1(_file1);
+        std::ifstream input_file2(_file2);
+        std::ifstream input_file3(_file3);
+        //to check either file location is valid or not
+        if(input_file1.is_open()&&input_file2.is_open()&&input_file3.is_open()){
+            break;
+        }
+        if(!input_file1.is_open()){
+                cout << "   Missing raw1.txt!" << endl;
+            }
+        if(!input_file2.is_open()){
+                cout << "   Missing raw2.txt!" << endl;
+            }
+        if(!input_file3.is_open()){
+                cout << "   Missing raw3.txt!" << endl;
+        }
+        if(!local){
+            std::cerr << "\nUnable to find data in local folder\nincomplete/missing data, try again.\n";
+        }
+        else{
+            std::cerr << "\nUnable to find data in specified folder - '" << filePath << "'\nincomplete/missing data, try again.\n";
+        }
+        
+    }
+    while (true);
+
+}
+
 
 void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
     for(int i=0;i<rawSize;i++){
@@ -42,6 +91,36 @@ void _sort(int arr[], int size){
     }
 }
 
+void sortX(int size, int _data[][2]){
+    for(int i=1;i<size;i++){
+        for(int i=0;i<size-1;i++){
+            if(_data[i+1][0]<_data[i][0]){
+                int tempdata[2];
+                tempdata[0]=_data[i][0];
+                tempdata[1]=_data[i][1];
+
+                _data[i][0]=_data[i+1][0];
+                _data[i][1]=_data[i+1][1];
+    
+                _data[i+1][0]=tempdata[0];
+                _data[i+1][1]=tempdata[1];
+            }
+        }
+    }
+}
+
+void displayDataArray(int size, int _data[][2]){
+    if(size>0){
+        for(int i=0;i<size;i++){
+            for(int j=0;j<2;j++){
+               cout << _data[i][j] << " ";
+            }
+            cout << "\n";
+        }
+    }
+else{cout << "Empty data!" << endl;}
+}
+
 void appendMatrix(int arr[], int size, int xloc, int _data[6][6]){      // (input data, input data, input data, output data)
 //x100A
 //int ycoord1[6] = {0, 0, 0, 0, 0, 0};
@@ -58,7 +137,7 @@ for(int i=0;i<size;i++){
     }
 }
 
-void displayMatrix(int _data[6][6], char _title[], bool toggleClear){
+void displayMatrix(int _data[6][6], string _title, bool toggleClear){
     cout << "------------- M a t r i x   d a t a   f o r   " << _title << " -------------------\n" << endl;
     cout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
     for(int j=0;j<6;j++){
@@ -122,52 +201,6 @@ int countContiguousNumbers(const string& filename) {
     inputFile.close();
     return count;
 }
-
-
-
-
-// section 1 aydin
-
-void readTextFiles(const string& folderPath, int set) {
-    char line;
-    string temp ; 
-    int number, i=0, j=0, k=0, repeat =0, raw[3][5000][2], change;
-
-    std::ifstream input_file(folderPath);
-        //input symbol data
-        input_file >> temp;
-        input_file >> line;
-        //input data to array
-        while (input_file >> line){  
-            if (input_file >> number){    
-                raw[set] [i][j] = number;
-
-                if (j == 0){
-                    j = 1; 
-                }
-                else {
-                    j = 0;
-                    i++;
-                    input_file >> temp;
-                    repeat ++;
-                }
-            }
-        }
-        input_file.close();
-
-        //print collected data
-        cout << "\nInput data("<<set+1<<")"<<endl;
-        cout << "[";
-        for (i=0 ; i < repeat ; i++){
-            j=0;
-            cout << "(" <<raw[set] [i][j] << " , " ;
-            j = 1;
-            cout << raw[set] [i][j] << ") " ; 
-
-        }
-        cout << "]"<<endl;
-        }
-
 
 void extractData(const string& fileName, int array[][2], int count, int maxPoints) {
     // Open the file

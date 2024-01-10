@@ -12,7 +12,7 @@
 
     limitations of code:
     - using file contents with the format " raw1>> [{0, 0}, {0, 0}, {0, 0}, ... {0, 0}]", any changes of the format of the input files will result in error of code
-    - works within the coordinates (x, y) = (100, 100) to (600, 600)
+
 
 */
 
@@ -37,7 +37,6 @@
 #define cout std::cout
 #define endl std::endl
 #define string std::string
-#define vector std::vector
 
 //---------------------------------- V a r i a b l e s ---------------------------------
 const int threshold = 30;
@@ -84,15 +83,9 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
     #endif                                              //DO NOT EDIT OR REMOVE
 
     // s t a r t   h e r e . . .
-do{
+
 //test data
-int dataV[6][6] = {{0, 0, 0, 0, 0, 0},
-                  {0, 0, 0, 0, 0, 0},
-                  {0, 0, 0, 0, 0, 0},
-                  {0, 0, 0, 0, 0, 0},
-                  {0, 0, 0, 0, 0, 0},
-                  {0, 0, 0, 0, 0, 0},
-                  };   
+
 //int raw1[][2] = {{0, 0}};
 //int raw1[][2] = {{0, 0}, {100, 98}, {99, 99}, {100, 99}, {101, 99}, {98, 100}, {99, 100}, {100, 100}, {101, 100}, {102, 100}, {97, 101}, {98, 101}, {99, 101}, {100, 101}, {101, 101}, {102, 101}, {103, 101}, {98, 102}, {99, 102}, {100, 102}, {101, 102}, {102, 102}, {99, 103}, {100, 103}, {101, 103}, {100, 104}, {600, 197}, {599, 198}, {600, 198}, {601, 198}, {598, 199}, {599, 199}, {600, 199}, {601, 199}, {602, 199}, {597, 200}, {598, 200}, {599, 200}, {600, 200}, {601, 200}, {602, 200}, {603, 200}, {598, 201}, {599, 201}, {600, 201}, {601, 201}, {602, 201}, {599, 202}, {600, 202}, {601, 202}, {600, 203}, {300, 297}, {299, 298}, {300, 298}, {301, 298}, {298, 299}, {299, 299}, {300, 299}, {301, 299}, {302, 299}, {297, 300}, {298, 300}, {299, 300}, {300, 300}, {301, 300}, {302, 300}, {303, 300}, {298, 301}, {299, 301}, {300, 301}, {301, 301}, {302, 301}, {299, 302}, {300, 302}, {301, 302}, {300, 303}, {400, 497}, {399, 498}, {400, 498}, {401, 498}, {398, 499}, {399, 499}, {400, 499}, {401, 499}, {402, 499}, {397, 500}, {398, 500}, {399, 500}, {400, 500}, {401, 500}, {402, 500}, {403, 500}, {398, 501}, {399, 501}, {400, 501}, {401, 501}, {402, 501}, {399, 502}, {400, 502}, {401, 502}, {400, 503}};
 //int raw1[][2] = {{0, 0}, {300, 197}, {600, 197}, {299, 198}, {300, 198}, {301, 198}, {599, 198}, {600, 198}, {601, 198}, {298, 199}, {299, 199}, {300, 199}, {301, 199}, {302, 199}, {598, 199}, {599, 199}, {600, 199}, {601, 199}, {602, 199}, {297, 200}, {298, 200}, {299, 200}, {300, 200}, {301, 200}, {302, 200}, {303, 200}, {597, 200}, {598, 200}, {599, 200}, {600, 200}, {601, 200}, {602, 200}, {603, 200}, {298, 201}, {299, 201}, {300, 201}, {301, 201}, {302, 201}, {598, 201}, {599, 201}, {600, 201}, {601, 201}, {602, 201}, {299, 202}, {300, 202}, {301, 202}, {599, 202}, {600, 202}, {601, 202}, {300, 203}, {600, 203}, {500, 297}, {499, 298}, {500, 298}, {501, 298}, {498, 299}, {499, 299}, {500, 299}, {501, 299}, {502, 299}, {497, 300}, {498, 300}, {499, 300}, {500, 300}, {501, 300}, {502, 300}, {503, 300}, {498, 301}, {499, 301}, {500, 301}, {501, 301}, {502, 301}, {499, 302}, {500, 302}, {501, 302}, {500, 303}, {200, 397}, {199, 398}, {200, 398}, {201, 398}, {198, 399}, {199, 399}, {200, 399}, {201, 399}, {202, 399}, {197, 400}, {198, 400}, {199, 400}, {200, 400}, {201, 400}, {202, 400}, {203, 400}, {198, 401}, {199, 401}, {200, 401}, {201, 401}, {202, 401}, {199, 402}, {200, 402}, {201, 402}, {200, 403}, {200, 598}, {199, 599}, {200, 599}, {201, 599}, {198, 600}, {199, 600}, {200, 600}, {201, 600}, {202, 600}, {197, 601}, {198, 601}, {199, 601}, {200, 601}, {201, 601}, {202, 601}, {203, 601}, {198, 602}, {199, 602}, {200, 602}, {201, 602}, {202, 602}, {199, 603}, {200, 603}, {201, 603}, {200, 604}};
@@ -525,10 +518,6 @@ cout << "\n";
 
 
 //----------------------- C e l l   e l e m e n t   c o u n t e r ---------------------------------------------------
-
-vector<vector<vector<int>>> xcoord(3, vector<vector<int>>(6, vector<int>(0)));
-
-
 int xcoord1[6] = {0, 0, 0, 0, 0, 0};                    // number of data exists across the x-axis for data1
 int xcoord2[6] = {0, 0, 0, 0, 0, 0};                    // number of data exists across the x-axis for data2
 int xcoord3[6] = {0, 0, 0, 0, 0, 0};                    // number of data exists across the x-axis for data3
@@ -546,7 +535,6 @@ if(data1_Index>0){                                          // not empty set
     for(int i=0;i<data1_Index;i++){
         int indx = int(round(static_cast<double>(data1[i][0])/100.0)-1);
         xcoord1[indx]++;
-        xcoord[0][indx].resize(xcoord1[indx]);
         if(i!=data1_Index-1 && data1[i+1][0]-data1[i][0]>threshold){            // distinct value
             difference[0]++;
             cout << "found 1 difference! current difference: " << difference[0] << ", current index: " << i << ", index jump: " << i+1 << endl;
@@ -574,7 +562,6 @@ if(data2_Index>0){                                          // not empty set
     for(int i=0;i<data2_Index;i++){
         int indx = int(round(static_cast<double>(data2[i][0])/100.0)-1);
         xcoord2[indx]++;
-        xcoord[1][indx].resize(xcoord2[indx]);
         if(i!=data2_Index-1 && data2[i+1][0]-data2[i][0]>threshold){            // distinct value
             difference[1]++;
             cout << "found 1 difference! current difference: " << difference[1] << ", current index: " << i << ", index jump: " << i+1 << endl;
@@ -603,7 +590,6 @@ if(data3_Index>0){                                          // not empty set
         int indx = int(round(static_cast<double>(data3[i][0])/100.0)-1);
         if(indx < 0){cout << "error!!!" << endl;}
         xcoord3[indx]++;
-        xcoord[2][indx].resize(xcoord3[indx]);
         if(i!=data3_Index-1 && data3[i+1][0]-data3[i][0]>threshold){            // distinct value
             difference[2]++;
             cout << "found 1 difference! current difference: " << difference[2] << ", current index: " << i << ", index jump: " << i+1 << endl;
@@ -625,6 +611,7 @@ if(data3_Index>0){                                          // not empty set
 else{cout << "Empty data! No coordinates found!" << endl;}
 cout << "-------------------------------------------------------------\n" << endl;
 //-------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -711,31 +698,6 @@ for(int i=0;i<xcoord3[5];i++){
 }
 }
 
-int start = 0;
-for(int j=0;j<6;j++){
-    for(int i=0;i<xcoord[0][j].size();i++){
-        xcoord[0][j][i] = data1[i+start][1];
-    }
-    start += xcoord[0][j].size();
-}
-
-start = 0;
-for(int j=0;j<6;j++){
-    for(int i=0;i<xcoord[1][j].size();i++){
-        xcoord[1][j][i] = data2[i+start][1];
-    }
-    start += xcoord[1][j].size();
-}
-
-start = 0;
-for(int j=0;j<6;j++){
-    for(int i=0;i<xcoord[2][j].size();i++){
-        xcoord[2][j][i] = data3[i+start][1];
-    }
-    start += xcoord[2][j].size();
-}
-
-
 //----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -785,35 +747,6 @@ if(data3_Index>0){
     appendMatrix(x500C, xcoord3[4], 4, dataC);
     appendMatrix(x600C, xcoord3[5], 5, dataC);
 }
-
-
-//vectorSort
-for(int i=0;i<3;i++){
-    for(int j=0;j<6;j++){
-        for(int k=1;k<xcoord[i][j].size();k++){
-            for(int l=0;l<xcoord[i][j].size()-k;l++){
-                if(xcoord[i][j][l]>xcoord[i][j][l+1]){
-                int temp = xcoord[i][j][l];
-                xcoord[i][j][l] = xcoord[i][j][l+1];
-                xcoord[i][j][l+1] = temp;
-            }
-            }
-        }
-    }
-}
-
-//vectorAppend
-for(int i=0;i<3;i++){
-    for(int j=0;j<6;j++){
-        for(int k=0;k<xcoord[i][j].size();k++){
-            int indx = int((round(static_cast<double>(xcoord[i][j][k])/100.0)-1));
-            dataV[indx][j] = i+1;
-        }
-    }
-}
-
-
-
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
@@ -968,39 +901,12 @@ displayMatrix(data, "F i n a l", 1);
 
     cout << "\nData has been written to output.txt" << endl;
 
-
-
-cout << "\nData verification\n\n";
-
-for(int k=0;k<3;k++){
-    for(int i=0;i<6;i++){
-        cout << "X" << i+1 << "00 > ";
-        for(int j=0;j<xcoord[k][i].size();j++){
-           cout << xcoord[k][i][j] << " ";
-        }
-        cout << "\n";
-    }
-    cout << "\n";
-}
-
-cout << "\n";
-
-for(int i=0;i<6;i++){
-    for(int j=0;j<6;j++){
-        cout << dataV[i][j] << " ";
-    }
-    cout << "\n";
-}
-
 closing();
 
 
-
-
-}
-while(1);
-
-
 return 0;
+
+
+
 }
 

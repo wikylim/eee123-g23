@@ -1,5 +1,54 @@
 #include <iostream>
+#include <vector>
 #include <fstream>
+using namespace std;
+
+#define vector std::vector
+
+
+int main() {
+
+
+    vector<vector<vector<int>>> xcoord(3, vector<vector<int>>(6, vector<int>(1)));
+
+    for(int i=0;i<3;i++){
+        for(int j=0;j<6;j++){
+            xcoord[i][j][j] = j+1;
+            xcoord[i][j].resize(j+1);
+            xcoord[i][j][j] = j+1;
+        }
+    }
+
+    for(int i=0;i<3;i++){
+        for(int j=0;j<6;j++){
+            for(int k=0;k<xcoord[i][j].size();k++){
+                cout << xcoord[i][j][k] << " ";
+            }
+        cout << "\n";
+        }
+        cout << "\n";
+    }
+
+
+    return 0;
+}
+
+/*
+
+ int dataA[6][6] = {{/* your data for dataA }};
+    int dataB[6][6] = {{/* your data for dataB }};
+    int dataC[6][6] = {{/* your data for dataC }};
+
+    // Write dataA to file
+    writeDataToFile("output.txt", dataA);
+
+    // Append dataB to the same file
+    writeDataToFile("output.txt", dataB);
+
+    // Append dataC to the same file
+    writeDataToFile("output.txt", dataC);
+
+    std::cout << "Data has been written to output.txt" << std::endl;
 
 const int numRows = 6;
 const int numCols = 6;
@@ -26,26 +75,9 @@ void writeDataToFile(const char* fileName, int data[][numCols]) {
     outputFile.close();
 }
 
-int main() {
-    int dataA[6][6] = {{/* your data for dataA */}};
-    int dataB[6][6] = {{/* your data for dataB */}};
-    int dataC[6][6] = {{/* your data for dataC */}};
-
-    // Write dataA to file
-    writeDataToFile("output.txt", dataA);
-
-    // Append dataB to the same file
-    writeDataToFile("output.txt", dataB);
-
-    // Append dataC to the same file
-    writeDataToFile("output.txt", dataC);
-
-    std::cout << "Data has been written to output.txt" << std::endl;
-
-    return 0;
-}
 
 
+*/
 
 
 
