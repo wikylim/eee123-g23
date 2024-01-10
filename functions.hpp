@@ -10,6 +10,8 @@
 #define string std::string
 #define vector std::vector
 
+string location;
+
 /*void _sort(int arr[], int size);
 void appendMatrix(int arr[], int size, int xloc, int _data[6][6]);
 void displayMatrix(int _data[6][6], char _title[], bool toggleClear);
@@ -47,6 +49,7 @@ void inputFunc(string& _file1, string& _file2, string& _file3){
         std::ifstream input_file3(_file3);
         //to check either file location is valid or not
         if(input_file1.is_open()&&input_file2.is_open()&&input_file3.is_open()){
+            location = filePath;
             break;
         }
         if(!input_file1.is_open()){
@@ -69,7 +72,6 @@ void inputFunc(string& _file1, string& _file2, string& _file3){
     while (true);
 
 }
-
 
 void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
     for(int i=0;i<rawSize;i++){
@@ -217,6 +219,7 @@ void extractData(const string& fileName, int array[][2], int count, int maxPoint
     
 
     while (std::getline(inputFile, line)) {
+        
         size_t start = line.find("(");
         size_t end = line.find(")");
 
@@ -245,7 +248,7 @@ void extractData(const string& fileName, int array[][2], int count, int maxPoint
     inputFile.close();
 }
 
-void writeDataToFile(const char* fileName, int data[][6]) {
+void writeDataToFile(const char* fileName, int _data[][6]) {
     // Open the file
     std::ofstream outputFile(fileName);
 
@@ -254,11 +257,11 @@ void writeDataToFile(const char* fileName, int data[][6]) {
         std::cerr << "Error opening the file: " << fileName << endl;
         return;
     }
-
+    outputFile << "Location of data: \n" << location << "\n" << endl;
     // Write the array contents to the file
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 6; j++) {
-            outputFile << data[i][j] << " ";
+            outputFile << _data[i][j] << " ";
         }
         outputFile << endl;
     }
@@ -266,9 +269,6 @@ void writeDataToFile(const char* fileName, int data[][6]) {
     // Close the file
     outputFile.close();
 }
-
-
-
 
 
 /*
