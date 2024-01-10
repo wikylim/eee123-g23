@@ -35,6 +35,7 @@
 
 
 #define cout std::cout
+#define oout outputFile
 #define endl std::endl
 #define string std::string
 #define vector std::vector
@@ -44,6 +45,9 @@ const int threshold = 30;
 string file1 = "raw1.txt";
 string file2 = "raw2.txt";
 string file3 = "raw3.txt";
+string outputTxt = "output.txt";
+
+// for output
 
 
 int data[6][6] = {{0, 0, 0, 0, 0, 0},
@@ -53,6 +57,7 @@ int data[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
                   };
+
 int dataV[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
@@ -83,19 +88,10 @@ int dataC[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
                   };
 
+vector<vector<vector<int>>> xcoord(3, vector<vector<int>>(6, vector<int>(0)));
+void vectorDataDisplay();
 
 
-
-//--------------------------------------------------------------------------------------
-
-int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
-    #if __linux__                                       //DO NOT EDIT OR REMOVE
-        return runCatchTests(argc, argv);               //DO NOT EDIT OR REMOVE
-    #endif                                              //DO NOT EDIT OR REMOVE
-
-    // s t a r t   h e r e . . .
-
-//test data
 //int raw1[][2] = {{0, 0}};
 //int raw1[][2] = {{0, 0}, {100, 98}, {99, 99}, {100, 99}, {101, 99}, {98, 100}, {99, 100}, {100, 100}, {101, 100}, {102, 100}, {97, 101}, {98, 101}, {99, 101}, {100, 101}, {101, 101}, {102, 101}, {103, 101}, {98, 102}, {99, 102}, {100, 102}, {101, 102}, {102, 102}, {99, 103}, {100, 103}, {101, 103}, {100, 104}, {600, 197}, {599, 198}, {600, 198}, {601, 198}, {598, 199}, {599, 199}, {600, 199}, {601, 199}, {602, 199}, {597, 200}, {598, 200}, {599, 200}, {600, 200}, {601, 200}, {602, 200}, {603, 200}, {598, 201}, {599, 201}, {600, 201}, {601, 201}, {602, 201}, {599, 202}, {600, 202}, {601, 202}, {600, 203}, {300, 297}, {299, 298}, {300, 298}, {301, 298}, {298, 299}, {299, 299}, {300, 299}, {301, 299}, {302, 299}, {297, 300}, {298, 300}, {299, 300}, {300, 300}, {301, 300}, {302, 300}, {303, 300}, {298, 301}, {299, 301}, {300, 301}, {301, 301}, {302, 301}, {299, 302}, {300, 302}, {301, 302}, {300, 303}, {400, 497}, {399, 498}, {400, 498}, {401, 498}, {398, 499}, {399, 499}, {400, 499}, {401, 499}, {402, 499}, {397, 500}, {398, 500}, {399, 500}, {400, 500}, {401, 500}, {402, 500}, {403, 500}, {398, 501}, {399, 501}, {400, 501}, {401, 501}, {402, 501}, {399, 502}, {400, 502}, {401, 502}, {400, 503}};
 //int raw1[][2] = {{0, 0}, {300, 197}, {600, 197}, {299, 198}, {300, 198}, {301, 198}, {599, 198}, {600, 198}, {601, 198}, {298, 199}, {299, 199}, {300, 199}, {301, 199}, {302, 199}, {598, 199}, {599, 199}, {600, 199}, {601, 199}, {602, 199}, {297, 200}, {298, 200}, {299, 200}, {300, 200}, {301, 200}, {302, 200}, {303, 200}, {597, 200}, {598, 200}, {599, 200}, {600, 200}, {601, 200}, {602, 200}, {603, 200}, {298, 201}, {299, 201}, {300, 201}, {301, 201}, {302, 201}, {598, 201}, {599, 201}, {600, 201}, {601, 201}, {602, 201}, {299, 202}, {300, 202}, {301, 202}, {599, 202}, {600, 202}, {601, 202}, {300, 203}, {600, 203}, {500, 297}, {499, 298}, {500, 298}, {501, 298}, {498, 299}, {499, 299}, {500, 299}, {501, 299}, {502, 299}, {497, 300}, {498, 300}, {499, 300}, {500, 300}, {501, 300}, {502, 300}, {503, 300}, {498, 301}, {499, 301}, {500, 301}, {501, 301}, {502, 301}, {499, 302}, {500, 302}, {501, 302}, {500, 303}, {200, 397}, {199, 398}, {200, 398}, {201, 398}, {198, 399}, {199, 399}, {200, 399}, {201, 399}, {202, 399}, {197, 400}, {198, 400}, {199, 400}, {200, 400}, {201, 400}, {202, 400}, {203, 400}, {198, 401}, {199, 401}, {200, 401}, {201, 401}, {202, 401}, {199, 402}, {200, 402}, {201, 402}, {200, 403}, {200, 598}, {199, 599}, {200, 599}, {201, 599}, {198, 600}, {199, 600}, {200, 600}, {201, 600}, {202, 600}, {197, 601}, {198, 601}, {199, 601}, {200, 601}, {201, 601}, {202, 601}, {203, 601}, {198, 602}, {199, 602}, {200, 602}, {201, 602}, {202, 602}, {199, 603}, {200, 603}, {201, 603}, {200, 604}};
@@ -121,6 +117,15 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
 //int raw3[][2] = {{0, 0}, {99, 298}, {100, 298}, {101, 298}, {98, 299}, {99, 299}, {100, 299}, {101, 299}, {102, 299}, {98, 300}, {99, 300}, {100, 300}, {101, 300}, {102, 300}, {98, 301}, {99, 301}, {100, 301}, {101, 301}, {102, 301}, {99, 302}, {100, 302}, {101, 302}, {499, 498}, {500, 498}, {501, 498}, {498, 499}, {499, 499}, {500, 499}, {501, 499}, {502, 499}, {498, 500}, {499, 500}, {500, 500}, {501, 500}, {502, 500}, {498, 501}, {499, 501}, {500, 501}, {501, 501}, {502, 501}, {499, 502}, {500, 502}, {501, 502}};
 //int raw3[][2] = {{0, 0}, {599, 98}, {600, 98}, {601, 98}, {598, 99}, {599, 99}, {600, 99}, {601, 99}, {602, 99}, {598, 100}, {599, 100}, {600, 100}, {601, 100}, {602, 100}, {598, 101}, {599, 101}, {600, 101}, {601, 101}, {602, 101}, {599, 102}, {600, 102}, {601, 102}, {399, 298}, {400, 298}, {401, 298}, {398, 299}, {399, 299}, {400, 299}, {401, 299}, {402, 299}, {398, 300}, {399, 300}, {400, 300}, {401, 300}, {402, 300}, {398, 301}, {399, 301}, {400, 301}, {401, 301}, {402, 301}, {399, 302}, {400, 302}, {401, 302}, {199, 498}, {200, 498}, {201, 498}, {198, 499}, {199, 499}, {200, 499}, {201, 499}, {202, 499}, {198, 500}, {199, 500}, {200, 500}, {201, 500}, {202, 500}, {198, 501}, {199, 501}, {200, 501}, {201, 501}, {202, 501}, {199, 502}, {200, 502}, {201, 502}, {299, 598}, {300, 598}, {301, 598}, {298, 599}, {299, 599}, {300, 599}, {301, 599}, {302, 599}, {298, 600}, {299, 600}, {300, 600}, {301, 600}, {302, 600}, {298, 601}, {299, 601}, {300, 601}, {301, 601}, {302, 601}, {299, 602}, {300, 602}, {301, 602}};
 //int raw3[][2] = {{0, 0}, {99, 298}, {100, 298}, {101, 298}, {98, 299}, {99, 299}, {100, 299}, {101, 299}, {102, 299}, {98, 300}, {99, 300}, {100, 300}, {101, 300}, {102, 300}, {98, 301}, {99, 301}, {100, 301}, {101, 301}, {102, 301}, {99, 302}, {100, 302}, {101, 302}};
+
+//--------------------------------------------------------------------------------------
+
+int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
+    #if __linux__                                       //DO NOT EDIT OR REMOVE
+        return runCatchTests(argc, argv);               //DO NOT EDIT OR REMOVE
+    #endif                                              //DO NOT EDIT OR REMOVE
+
+    // s t a r t   h e r e . . .
 
 //----------------------------------------- f e t c h   r a w   d a t a   f i l e s -----------------------------------------------
 
@@ -150,7 +155,6 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
     int count3 = 0;    
     // Extract data from raw3.txt
     extractData(file3, raw3, count3, giveIndex);
-
 
 /*
       // Open the file for reading
@@ -429,54 +433,10 @@ data3_Index--;                                                  // after removin
 
 //---------------------------------- s o r t   b y   x - c o o r d i n a t e   i n   a s c e n d i n g   o r d e r ---------------------------------
 
-for(int i=1;i<data1_Index;i++){
-    for(int i=0;i<data1_Index-1;i++){
-        if(data1[i+1][0]<data1[i][0]){
-            int tempdata[2];
-            tempdata[0]=data1[i][0];
-            tempdata[1]=data1[i][1];
+sortX(data1_Index, data1);
+sortX(data2_Index, data2);
+sortX(data3_Index, data3);
 
-            data1[i][0]=data1[i+1][0];
-            data1[i][1]=data1[i+1][1];
-    
-            data1[i+1][0]=tempdata[0];
-            data1[i+1][1]=tempdata[1];
-        }
-    }
-}
-
-for(int i=1;i<data2_Index;i++){
-    for(int i=0;i<data2_Index-1;i++){
-        if(data2[i+1][0]<data2[i][0]){
-            int tempdata[2];
-            tempdata[0]=data2[i][0];
-            tempdata[1]=data2[i][1];
-
-            data2[i][0]=data2[i+1][0];
-            data2[i][1]=data2[i+1][1];
-    
-            data2[i+1][0]=tempdata[0];
-            data2[i+1][1]=tempdata[1];
-        }
-    }
-}
-
-for(int i=1;i<data3_Index;i++){
-    for(int i=0;i<data3_Index-1;i++){
-        if(data3[i+1][0]<data3[i][0]){
-            int tempdata[2];
-            tempdata[0]=data3[i][0];
-            tempdata[1]=data3[i][1];
-
-            data3[i][0]=data3[i+1][0];
-            data3[i][1]=data3[i+1][1];
-    
-            data3[i+1][0]=tempdata[0];
-            data3[i+1][1]=tempdata[1];
-        }
-    }
-}
-    
 cout << "\n";
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -487,37 +447,13 @@ cout << "\n";
 
 //------------------------------------ D i s p l a y   d a t a   a r r a y -------------------------------------------
 cout << "\n>data1" << endl;
-if(data1_Index>0){
-    for(int i=0;i<data1_Index;i++){
-        for(int j=0;j<2;j++){
-            cout << data1[i][j] << " ";
-        }
-        cout << "\n";
-    }
-}
-else{cout << "Empty data!" << endl;}
+displayDataArray(data1_Index, data1);
 
 cout << "\n>data2" << endl;
-if(data2_Index>0){
-    for(int i=0;i<data2_Index;i++){
-        for(int j=0;j<2;j++){
-            cout << data2[i][j] << " ";
-        }
-        cout << "\n";
-    }
-}
-else{cout << "Empty data!" << endl;}
+displayDataArray(data2_Index, data2);
 
 cout << "\n>data3" << endl;
-if(data3_Index>0){
-    for(int i=0;i<data3_Index;i++){
-        for(int j=0;j<2;j++){
-            cout << data3[i][j] << " ";
-        }
-        cout << "\n";
-    }
-}
-else{cout << "Empty data!" << endl;}
+displayDataArray(data3_Index, data3);
 
 cout << "\n";
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -528,9 +464,6 @@ cout << "\n";
 
 
 //----------------------- C e l l   e l e m e n t   c o u n t e r ---------------------------------------------------
-
-vector<vector<vector<int>>> xcoord(3, vector<vector<int>>(6, vector<int>(0)));
-
 
 int xcoord1[6] = {0, 0, 0, 0, 0, 0};                    // number of data exists across the x-axis for data1
 int xcoord2[6] = {0, 0, 0, 0, 0, 0};                    // number of data exists across the x-axis for data2
@@ -714,6 +647,8 @@ for(int i=0;i<xcoord3[5];i++){
 }
 }
 
+
+//vector y-append
 int start = 0;
 for(int j=0;j<6;j++){
     for(int i=0;i<xcoord[0][j].size();i++){
@@ -815,38 +750,11 @@ for(int i=0;i<3;i++){
     }
 }
 
-
-
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
-/*
-//set data1 into 1
-for(int i=0;i<6;i++){
-    for(int j=0;j<6;j++){
-        if(dataA[i][j]!=0){
-            dataA[i][j]=1;
-        }
-    }
-}
 
-//set data2 into 2
-for(int i=0;i<6;i++){
-    for(int j=0;j<6;j++){
-        if(dataB[i][j]!=0){
-            dataB[i][j]=2;
-        }
-    }
-}
 
-//set data3 into 3
-for(int i=0;i<6;i++){
-    for(int j=0;j<6;j++){
-        if(dataC[i][j]!=0){
-            dataC[i][j]=3;
-        }
-    }
-}
-*/
+
 
 //----------------------------------- D i s p l a y   a p p e n d e d   y - c o o r d i n a t e s --------------------------------------------
 cout << "\n-----------------------------------------------------------------" << endl;
@@ -943,8 +851,6 @@ for(int i=0;i<6;i++){               // dont care the unknown indexes, get every 
     cout << "jump index " << i+1 << " : " << x1Jump[i] << endl;
 }*/
 cout << "\n\n";
-
-
 displayMatrix(dataA, "R a w   1", 1);
 displayMatrix(dataB, "R a w   2", 1);
 displayMatrix(dataC, "R a w   3", 1);
@@ -964,38 +870,344 @@ for(int i=0;i<6;i++){
     
 
 displayMatrix(data, "F i n a l", 1);
+vectorDataDisplay();
+//writeDataToFile("output.txt", data);
 
 
 
-    writeDataToFile("output.txt", data);
 
-    cout << "\nData has been written to output.txt" << endl;
+    std::ofstream outputFile(outputTxt);
+    std::ifstream sourceFile1(file1);
+    std::ifstream sourceFile2(file2);
+    std::ifstream sourceFile3(file3);
+/*
+    // Check if the file is open
+    if (!outputFile.is_open()) {
+        std::cerr << "Error opening the file: " << outputTxt << endl;
+        return;
+    }
 
+    // Write the array contents to the file
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            outputFile << data[i][j] << " ";
+        }
+        outputFile << endl;
+    }
 
+    // Display location
+    outputFile << "Location: \n" << location << endl;
+*/
 
-cout << "\nData verification\n\n";
+    outputFile << "Location of data: \n" << location << "\n" << endl;
+    // Write the array contents to the file
+    
 
-for(int k=0;k<3;k++){
+    // Display raw data fed
+    string _line;
+    oout << "Input ";
+    while(std::getline(sourceFile1, _line)) {
+        oout << _line << endl;
+    }
+    oout << "Input ";
+    while(std::getline(sourceFile2, _line)) {
+        oout << _line << endl;
+    }
+    oout << "Input ";
+    while(std::getline(sourceFile3, _line)) {
+        oout << _line << endl;
+    }
+    oout << "\n\n";
+    sourceFile1.close();
+    sourceFile2.close();
+    sourceFile3.close();
+    
+    // Display raw data indices
+    oout << "raw1 Index: " << data1_Index << endl;
+    oout << "raw2 Index: " << data2_Index << endl;
+    oout << "raw3 Index: " << data3_Index << endl;
+    oout << "\n\n";
+
+    // Display copied and sorted data (sort by x-coordinate)
+    oout << ">data1 (sorted by x-axis ascending order)" << endl;
+    if(data1_Index>0){
+        for(int i=0;i<data1_Index;i++){
+            for(int j=0;j<2;j++){
+               oout << data1[i][j] << " ";
+            }
+            oout << " | "; //"\n";
+        }
+    }
+    else{oout << "Empty data!" << endl;}
+    oout << "\n\n";
+    oout << ">data2 (sorted by x-axis ascending order)" << endl;
+    if(data2_Index>0){
+        for(int i=0;i<data2_Index;i++){
+            for(int j=0;j<2;j++){
+               oout << data2[i][j] << " ";
+            }
+            oout << " | "; //"\n";
+        }
+    }
+    else{oout << "Empty data!" << endl;}
+    oout << "\n\n";
+    oout << ">data3 (sorted by x-axis ascending order)" << endl;
+    if(data3_Index>0){
+        for(int i=0;i<data3_Index;i++){
+            for(int j=0;j<2;j++){
+               oout << data3[i][j] << " ";
+            }
+            oout << " | "; //"\n";
+        }
+    }
+    else{oout << "Empty data!" << endl;}
+    oout << "\n\n";
+
+    // Display preliminary report
+    oout << "--------- P R E L I M I N A R Y     R E P O R T -------------" << endl;
+    if(data1_Index>0){
+    oout << "---------------------- R E P O R T   1 ----------------------" << endl;
+    oout << "number of indexes found: " << data1_Index << endl;
+    oout << "\n{ " ;
     for(int i=0;i<6;i++){
-        cout << "X" << i+1 << "00 > ";
-        for(int j=0;j<xcoord[k][i].size();j++){
-           cout << xcoord[k][i][j] << " ";
+    oout << xcoord1[i] << "\t";
+    }oout << "}" << endl;
+    oout << "\n" << difference[0] << " distinct x-coordinates found!" << endl;
+    }
+    else{oout << "Empty data! No coordinates found!" << endl;}
+    oout << "-------------------------------------------------------------\n" << endl;
+
+    if(data2_Index>0){
+    oout << "---------------------- R E P O R T   2 ----------------------" << endl;
+    oout << "number of indexes found: " << data2_Index << endl;
+    oout << "\n{ " ;
+    for(int i=0;i<6;i++){
+    oout << xcoord2[i] << "\t";
+    }oout << "}" << endl;
+    oout << "\n" << difference[1] << " distinct x-coordinates found!" << endl;
+    }
+    else{oout << "Empty data! No coordinates found!" << endl;}
+    oout << "-------------------------------------------------------------\n" << endl;
+
+    if(data3_Index>0){
+    oout << "---------------------- R E P O R T   3 ----------------------" << endl;
+    oout << "number of indexes found: " << data3_Index << endl;
+    oout << "\n{ " ;
+    for(int i=0;i<6;i++){
+    oout << xcoord3[i] << "\t";
+    }oout << "}" << endl;
+    oout << "\n" << difference[2] << " distinct x-coordinates found!" << endl;
+    }
+    else{oout << "Empty data! No coordinates found!" << endl;}
+    oout << "-------------------------------------------------------------\n" << endl;
+
+    // Displaying y-coordinates
+    oout << "\n-----------------------------------------------------------------" << endl;
+    oout << "  DISPLAYING LIST OF Y-COORDINATES FOR EACH RESPECTIVE X-AXIS " << endl;
+    oout << "-----------------------------------------------------------------";
+    oout << "\ndata1 y-coord: ";
+    oout << "\nx100A: ";
+    for(int i=0;i<xcoord1[0];i++){              // get xcoord y-coordinate for data1
+        oout << x100A[i] << " ";                 // x location = 100
+    }
+    oout << "\nx200A: ";
+    for(int i=0;i<xcoord1[1];i++){
+    oout << x200A[i] << " ";
+    }
+    oout << "\nx300A: ";
+    for(int i=0;i<xcoord1[2];i++){
+        oout << x300A[i] << " ";
+    }
+    oout << "\nx400A: ";
+    for(int i=0;i<xcoord1[3];i++){
+        oout << x400A[i] << " ";
+    }
+    oout << "\nx500A: ";
+    for(int i=0;i<xcoord1[4];i++){
+        oout << x500A[i] << " ";
+    }
+    oout << "\nx600A: ";
+    for(int i=0;i<xcoord1[5];i++){
+        oout << x600A[i] << " ";
+    }
+
+    oout << "\n\ndata2 y-coord: ";
+    oout << "\nx100B: ";
+    for(int i=0;i<xcoord2[0];i++){              // get xcoord y-coordinate for data2
+        oout << x100B[i] << " ";                 // x location = 100
+    }
+    oout << "\nx200B: ";
+    for(int i=0;i<xcoord2[1];i++){
+        oout << x200B[i] << " ";
+    }
+    oout << "\nx300B: ";
+    for(int i=0;i<xcoord2[2];i++){
+    oout << x300B[i] << " ";
+    }
+    oout << "\nx400B: ";
+    for(int i=0;i<xcoord2[3];i++){
+        oout << x400B[i] << " ";
+    }
+    oout << "\nx500B: ";
+    for(int i=0;i<xcoord2[4];i++){
+        oout << x500B[i] << " ";
+    }
+    oout << "\nx600B: ";
+    for(int i=0;i<xcoord2[5];i++){
+        oout << x600B[i] << " ";
+    }
+
+    oout << "\n\ndata3 y-coord: ";
+    oout << "\nx100C: ";
+    for(int i=0;i<xcoord3[0];i++){              // get xcoord y-coordinate for data3
+        oout << x100C[i] << " ";                 // x location = 100
+    }
+    oout << "\nx200C: ";
+    for(int i=0;i<xcoord3[1];i++){
+        oout << x200C[i] << " ";
+    }
+    oout << "\nx300C: ";
+    for(int i=0;i<xcoord3[2];i++){
+        oout << x300C[i] << " ";
+    }
+    oout << "\nx400C: ";
+    for(int i=0;i<xcoord3[3];i++){
+        oout << x400C[i] << " ";
+    }
+    oout << "\nx500C: ";
+    for(int i=0;i<xcoord3[4];i++){
+        oout << x500C[i] << " ";
+    }
+    oout << "\nx600C: ";
+    for(int i=0;i<xcoord3[5];i++){
+        oout << x600C[i] << " ";
+    }
+    oout << "\n-----------------------------------------------------------------" << endl;
+    oout << "\n\n";
+
+    // Display for Matrix form
+    bool _toggleClear = 1;
+    oout << "------------------------ M a t r i x   D i s p l a y ------------------------" << endl;
+    oout << "Clean mode: ";
+    if(_toggleClear){oout << "ON";}else{oout << "OFF";}oout << "\n\n";
+    oout << "------------- M a t r i x   d a t a   f o r   d a t a   1 -------------------\n" << endl;
+    oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
+    for(int j=0;j<6;j++){
+        if(j<4){
+            oout << "D\t";
+        }
+        else{oout << "R\t";}
+        for(int i=0;i<6;i++){
+            if(dataA[j][i]==0 && _toggleClear){oout << "\t";}
+            else{oout << dataA[j][i] << "\t";}
+        }
+        oout << "\n";
+    }
+    oout << "\n-----------------------------------------------------------------------------\n";
+    oout << "------------- M a t r i x   d a t a   f o r   d a t a   2 -------------------\n" << endl;
+    oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
+    for(int j=0;j<6;j++){
+        if(j<4){
+            oout << "D\t";
+        }
+        else{oout << "R\t";}
+        for(int i=0;i<6;i++){
+            if(dataB[j][i]==0 && _toggleClear){oout << "\t";}
+            else{oout << dataB[j][i] << "\t";}
+        }
+        oout << "\n";
+    }
+    oout << "\n-----------------------------------------------------------------------------\n";
+    oout << "------------- M a t r i x   d a t a   f o r   d a t a   3 -------------------\n" << endl;
+    oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
+    for(int j=0;j<6;j++){
+        if(j<4){
+            oout << "D\t";
+        }
+        else{oout << "R\t";}
+        for(int i=0;i<6;i++){
+            if(dataC[j][i]==0 && _toggleClear){oout << "\t";}
+            else{oout << dataC[j][i] << "\t";}
+        }
+        oout << "\n";
+    }
+    oout << "\n-----------------------------------------------------------------------------\n";
+
+    oout << "----------------------- F i n a l   M a t r i x -----------------------------\n" << endl;
+    oout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
+    for(int j=0;j<6;j++){
+        if(j<4){
+            oout << "D\t";
+        }
+        else{oout << "R\t";}
+        for(int i=0;i<6;i++){
+            if(data[j][i]==0 && _toggleClear){oout << "\t";}
+            else{oout << data[j][i] << "\t";}
+        }
+        oout << "\n";
+    }
+    oout << "\n-----------------------------------------------------------------------------\n";
+    oout << "\n\n";
+
+    // bye
+    oout << "\n-----------------------------------------------------------------------------\n";
+    oout << "\n";
+    oout << "                         T h a n k   y o u" << endl;
+    oout << "\n                   H a v e   a   g o o d   d a y   : ) \n" << endl;
+    oout << "\n-----------------------------------------------------------------------------\n";
+    
+
+    // quick display
+    oout << "\n\n\n\n\n";
+    oout << "---------------\nvanilla mode (debugging)\n---------------\n";
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            outputFile << data[i][j] << " ";
+        }
+        outputFile << endl;
+    }
+
+    oout << "\n\nVector data\n";
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            outputFile << dataV[i][j] << " ";
+        }
+        outputFile << endl;
+    }
+
+
+    // Close the file
+    outputFile.close();
+    
+    cout << "\nData has been written to output.txt\nReport generated" << endl;
+   
+    closing();
+
+return 0;
+
+}
+
+void vectorDataDisplay(){
+    cout << "\nData verification (Vector data) \n\n";
+
+    for(int k=0;k<3;k++){
+        for(int i=0;i<6;i++){
+            cout << "X" << i+1 << "00 > ";
+            for(int j=0;j<xcoord[k][i].size();j++){
+                cout << xcoord[k][i][j] << " ";
+            }
+            cout << "\n";
         }
         cout << "\n";
     }
+
     cout << "\n";
-}
 
-cout << "\n";
-
-for(int i=0;i<6;i++){
-    for(int j=0;j<6;j++){
-        cout << dataV[i][j] << " ";
+    for(int i=0;i<6;i++){
+        for(int j=0;j<6;j++){
+            cout << dataV[i][j] << " ";
+        }
+       cout << "\n";
     }
-    cout << "\n";
-}
-
-closing();
-return 0;
 }
 
