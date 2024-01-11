@@ -23,12 +23,14 @@
         return Catch::Session().run(argc, argv);}       //DO NOT EDIT OR REMOVE
 #endif                                                  //DO NOT EDIT OR REMOVE
 
-//#include <iomanip>
+#include <iomanip>
 //#include <algorithm>
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <fstream>
+#include <ctime>
+#include <iomanip>
 #include "functions.hpp"
 
 #define cout std::cout
@@ -551,7 +553,32 @@ displayMatrix(data, "F i n a l", 1);
     std::ifstream sourceFile1(file1);
     std::ifstream sourceFile2(file2);
     std::ifstream sourceFile3(file3);
-    outputFile << "Location of data: \n" << location << "\n" << endl;
+
+    // Vanity code
+    oout << "_________________________________________________________________" << endl;
+    oout<<"\n          T A B L E   T O   M A T R I X   R E P O R T" << endl;
+    oout << "_________________________________________________________________" << endl;
+    std::time_t currentTime = std::time(0);
+    std::tm* localTime = std::localtime(&currentTime);
+    const char* daysOfWeek[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    const char* monthAbbreviations[] = {
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    };
+    outputFile << "Time of report generation:\t" 
+                    << std::setfill('0') << localTime->tm_mday
+                    << "-" << std::setfill('0') << monthAbbreviations[localTime->tm_mon]
+                    << "-" << std::setfill('0') << localTime->tm_year + 1900
+                    << " "
+                    << " " << std::setfill('0') << std::setw(2) << localTime->tm_hour
+                    << ":" << std::setfill('0') << std::setw(2) << localTime->tm_min
+                    << ":" << std::setfill('0') << std::setw(2) << localTime->tm_sec
+                    << " "
+                    << "(" << daysOfWeek[localTime->tm_wday] << ")" << endl;
+                  
+
+    outputFile << "Location of data:\t\t\t" << location << endl;
+    oout << "_________________________________________________________________\n" << endl;
     // Write the array contents to the file
     
     // Display raw data fed
