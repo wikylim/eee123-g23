@@ -19,6 +19,23 @@ rooms = ['R1', 'R2', 'R3', 'R4', 'R5', 'NS']
 colhead = ['D', '', '', '', 'R', '']
 
 #-----------------------------------------------------------------
+template_path = "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/templateForGenerate.png"
+images = ["C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/A.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/B.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/C.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          #"C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          #"C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png"
+          ]
+
+output_path = "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/generated_table.png"
+#-----------------------------------------------------------------
 
 null = []
 
@@ -163,21 +180,6 @@ def convert(datain, matrixdata, datatype):
 #cv.imshow(targettable, image)
 #cv.imshow("1.png", template)
                             
-template_path = "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/templateForGenerate.png"
-images = ["C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/A.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/B.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/C.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png"]
-
-output_path = "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/generated_table.png"
 
 generate_random_table(template_path, images, output_path)
 

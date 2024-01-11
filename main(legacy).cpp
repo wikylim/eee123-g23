@@ -554,7 +554,7 @@ displayMatrix(data, "F i n a l", 1);
     std::ifstream sourceFile2(file2);
     std::ifstream sourceFile3(file3);
 
-    // Vanity code
+    // Vanity code, totally unnecessary
     oout << "_________________________________________________________________" << endl;
     oout<<"\n          T A B L E   T O   M A T R I X   R E P O R T" << endl;
     oout << "_________________________________________________________________" << endl;
@@ -607,7 +607,7 @@ displayMatrix(data, "F i n a l", 1);
     oout << "\n\n";
 
     // Display copied and sorted data (sort by x-coordinate)
-    oout << ">data1 (sorted by x-axis ascending order)" << endl;
+    oout << ">data1 (sorted by x-axis in ascending order)" << endl;
     if(data1_Index>0){
         for(int i=0;i<data1_Index;i++){
             for(int j=0;j<2;j++){
@@ -618,7 +618,7 @@ displayMatrix(data, "F i n a l", 1);
     }
     else{oout << "Empty data!" << endl;}
     oout << "\n\n";
-    oout << ">data2 (sorted by x-axis ascending order)" << endl;
+    oout << ">data2 (sorted by x-axis in ascending order)" << endl;
     if(data2_Index>0){
         for(int i=0;i<data2_Index;i++){
             for(int j=0;j<2;j++){
@@ -629,7 +629,7 @@ displayMatrix(data, "F i n a l", 1);
     }
     else{oout << "Empty data!" << endl;}
     oout << "\n\n";
-    oout << ">data3 (sorted by x-axis ascending order)" << endl;
+    oout << ">data3 (sorted by x-axis in ascending order)" << endl;
     if(data3_Index>0){
         for(int i=0;i<data3_Index;i++){
             for(int j=0;j<2;j++){
