@@ -1,117 +1,149 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 
+using namespace std;
 
+int main(){
 
-int main() {
-    std::string folderName;
-    std::string filename;
+    //raw data
+    cout<<"raw1>> [(0, 0), (100, 98), (99, 99), (100, 99), (101, 99), (98, 100), (99, 100), (100, 100), (101, 100), (102, 100), (97, 101), (98, 101), (99, 101), (100, 101), (101, 101), (102, 101), (103, 101), (98, 102), (99, 102), (100, 102), (101, 102), (102, 102), (99, 103), (100, 103), (101, 103), (100, 104), (600, 197), (599, 198), (600, 198), (601, 198), (598, 199), (599, 199), (600, 199), (601, 199), (602, 199), (597, 200), (598, 200), (599, 200), (600, 200), (601, 200), (602, 200), (603, 200), (598, 201), (599, 201), (600, 201), (601, 201), (602, 201), (599, 202), (600, 202), (601, 202), (600, 203), (300, 297), (299, 298), (300, 298), (301, 298), (298, 299), (299, 299), (300, 299), (301, 299), (302, 299), (297, 300), (298, 300), (299, 300), (300, 300), (301, 300), (302, 300), (303, 300), (298, 301), (299, 301), (300, 301), (301, 301), (302, 301), (299, 302), (300, 302), (301, 302), (300, 303), (400, 497), (399, 498), (400, 498), (401, 498), (398, 499), (399, 499), (400, 499), (401, 499), (402, 499), (397, 500), (398, 500), (399, 500), (400, 500), (401, 500), (402, 500), (403, 500), (398, 501), (399, 501), (400, 501), (401, 501), (402, 501), (399, 502), (400, 502), (401, 502), (400, 503)]"<<endl;
+    cout<<"raw2>> [(0, 0)] "<<endl;
+    cout<<"raw3>> [(0, 0)]"<<endl;
+    cout<<endl;
 
-    while (true) {
-        // Display a prompt to enter the folder name
-        std::cout << "Enter the folder name: ";
-        std::getline(std::cin, folderName);
+    //sorted data
+    cout<<"sort..."<<endl;
 
-        // Display a prompt to enter the file name
-        std::cout << "Enter the name of the file to open in the folder '" << folderName << "': ";
-        std::getline(std::cin, filename);
+    cout<<"sorted_data1: ";
+    int sorted_data1[3]={1,2,3};
+    for(int i=0;i<3;i++){
+        std::cout<<sorted_data1[i]<<" ";
+    }
+        cout<<endl;
+        cout<<"sorted_data2: ";
+    int sorted_data2[3]={4,5,6};
+    for(int i=0;i<3;i++){
+        std::cout<<sorted_data2[i]<<" ";
+    }
+        cout<<endl;
+    cout<<"sorted_data3: ";
+    int sorted_data3[3]={7,8,9};
+    for(int i=0;i<3;i++){
+        std::cout<<sorted_data3[i]<<" ";
+    }
+        cout<<endl;
+        cout<<endl;
 
-        // Open the file with the specified folder and file names
-        std::ifstream file(folderName + "/" + filename);
+//final data
+    cout<<"final_data: ";
+    int final_data[6][6]=  {{1, 2, 3, 4, 5, 6},
+                            {7, 8, 9, 10, 11, 12},
+                            {13, 14, 15, 16, 17, 18},
+                            {19, 20, 21, 22, 23, 24},
+                            {25, 26, 27, 28, 29, 30},
+                            {31, 32, 33, 34, 35, 36}};
 
-        if (file.is_open()) {
-            // File opened successfully, break out of the loop
-            break;
-        } else {
-            // Error opening file
-            std::cerr << "Error opening file: " << folderName << "/" << filename << std::endl;
-
-            // Ask the user to input again
-            std::cout << "Please try again." << std::endl;
+    for (int i = 0; i < 6; i++) {
+    cout << "{{";
+    for (int j = 0; j < 6; j++) {
+        cout << final_data[i][j];
+        if (j < 5) {
+            cout << ", ";
         }
     }
-
-    // Read and print the content line by line
-    std::cout << "Raw Data:" << std::endl;
-    std::string line;
-    std::ifstream file(folderName + "/" + filename); // Open the file again for reading
-
-    while (std::getline(file, line)) {
-        std::cout << line << std::endl;
+    cout << "}";
+    if (i < 5) {
+        cout << ",";
+    }
+    }
+    cout << "}" << endl;
+        cout<<endl;
+    
+//matrix form
+    cout<<"final_data(in matrix form): "<<endl;
+    for(int i=0;i<6;i++) {
+        for(int j=0;j<6;j++) {
+            cout<<final_data[i][j]<<" ";
+        }
+    cout<<endl;
     }
 
-    // Close the file
-    file.close();
 
 
 
+//outputfile
 
+    ofstream outputfile ("output.txt");
+    if(outputfile.is_open()){
+          //raw data
+    outputfile<<"raw1>> [(0, 0), (100, 98), (99, 99), (100, 99), (101, 99), (98, 100), (99, 100), (100, 100), (101, 100), (102, 100), (97, 101), (98, 101), (99, 101), (100, 101), (101, 101), (102, 101), (103, 101), (98, 102), (99, 102), (100, 102), (101, 102), (102, 102), (99, 103), (100, 103), (101, 103), (100, 104), (600, 197), (599, 198), (600, 198), (601, 198), (598, 199), (599, 199), (600, 199), (601, 199), (602, 199), (597, 200), (598, 200), (599, 200), (600, 200), (601, 200), (602, 200), (603, 200), (598, 201), (599, 201), (600, 201), (601, 201), (602, 201), (599, 202), (600, 202), (601, 202), (600, 203), (300, 297), (299, 298), (300, 298), (301, 298), (298, 299), (299, 299), (300, 299), (301, 299), (302, 299), (297, 300), (298, 300), (299, 300), (300, 300), (301, 300), (302, 300), (303, 300), (298, 301), (299, 301), (300, 301), (301, 301), (302, 301), (299, 302), (300, 302), (301, 302), (300, 303), (400, 497), (399, 498), (400, 498), (401, 498), (398, 499), (399, 499), (400, 499), (401, 499), (402, 499), (397, 500), (398, 500), (399, 500), (400, 500), (401, 500), (402, 500), (403, 500), (398, 501), (399, 501), (400, 501), (401, 501), (402, 501), (399, 502), (400, 502), (401, 502), (400, 503)]"<<endl;
+    outputfile<<"raw2>> "<<endl;
+    outputfile<<"raw3>> "<<endl;
+    outputfile<<endl;
 
-int sorted_data1[3]={1,2,3};
-int sorted_data2[3]={4,5,6};
-int sorted_data3[3]={7,8,9};
-
-int final_data[6][6]={
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0},
-                        {0,0,0,0,0,0}};
-
-
-
-    // Print the retrieved data to the terminal
-    std::cout << "Processed data: " << std::endl;
-    std::cout << "Sorted data 1: " << sorted_data1[3] << std::endl;
-    std::cout << "Sorted data 2: " << sorted_data2[3] << std::endl;
-    std::cout << "Sorted data 3: " << sorted_data3[3] << std::endl;
-
-    std::cout << "Final data: " << final_data[6][6] << std::endl;
-
-
-
-
-
-
-
-    // Open a file for writing
-    std::ofstream outputFile("output.txt");
-
-    if (!outputFile.is_open()) {
-        // Error opening file
-        std::cerr << "Error opening file for writing." << std::endl;
-        return 1;
+    //sorted data
+    outputfile<<"sort..."<<endl;
+    outputfile<<"sorted_data1: ";
+    int sorted_data1[3]={1,2,3};
+    for(int i=0;i<3;i++){
+        outputfile<<sorted_data1[i]<<" ";
     }
-
-    // Redirect std::cout to the file
-    std::streambuf *originalStdout = std::cout.rdbuf();
-    std::cout.rdbuf(outputFile.rdbuf());
-
-    // Save all data to the file
-    std::cout << "Raw Data:" << std::endl;
-    file.open(folderName + "/" + filename);
-    while (std::getline(file, line)) {
-        std::cout << line << std::endl;
+        outputfile<<endl;
+        outputfile<<"sorted_data2: ";
+    int sorted_data2[3]={4,5,6};
+    for(int i=0;i<3;i++){
+        outputfile<<sorted_data2[i]<<" ";
     }
-    file.close();
+        outputfile<<endl;
+    outputfile<<"sorted_data3: ";
+    int sorted_data3[3]={7,8,9};
+    for(int i=0;i<3;i++){
+        outputfile<<sorted_data3[i]<<" ";
+    }
+    outputfile<<endl;
+    outputfile<<endl;
 
-    std::cout << "Processed Data:" << std::endl;
-    std::cout << "Sorted data 1: " << sorted_data1 << std::endl;
-    std::cout << "Sorted data 2: " << sorted_data2 << std::endl;
-    std::cout << "Sorted data 3: " << sorted_data3 << std::endl;
 
-    std::cout << "Final data: " << final_data << std::endl;
+    //final data
+    outputfile<<"final_data: ";
+    int final_data[6][6]=  {{1, 2, 3, 4, 5, 6},
+                            {7, 8, 9, 10, 11, 12},
+                            {13, 14, 15, 16, 17, 18},
+                            {19, 20, 21, 22, 23, 24},
+                            {25, 26, 27, 28, 29, 30},
+                            {31, 32, 33, 34, 35, 36}};
 
+    for (int i = 0; i < 6; i++) {
+    outputfile << "{{";
+    for (int j = 0; j < 6; j++) {
+        outputfile << final_data[i][j];
+        if (j < 5) {
+            outputfile << ", ";
+        }
+    }
+    outputfile << "}";
+    if (i < 5) {
+        outputfile << ",";
+    }
+    }
+    outputfile << "}" << endl;
+    outputfile<<endl;
 
-    // Restore std::cout to the original buffer
-    std::cout.rdbuf(originalStdout);
+    outputfile<<"final_data(in matrix form):"<<endl;
+    for(int i=0;i<6;i++) {
+        for(int j=0;j<6;j++) {
+            outputfile<<final_data[i][j]<<" ";
+        }
+    outputfile<<endl;
+    }
+    outputfile<<endl;
 
-    // Close the file
-    outputFile.close();
-
-    std::cout << "Program output has been written to 'output.txt'." << std::endl;
-
+//close output.txt
+    outputfile.close();
+    }else{
+        cerr<<"unable to open file for writing."<<endl;
+    }
+    
     return 0;
+
 }
