@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -35,16 +36,17 @@ int main(){
         cout<<endl;
 
 //final data
-    cout<<"final_data: ";
+    cout<<"final_data: "<<endl;
     int final_data[6][6]=  {{1, 2, 3, 4, 5, 6},
                             {7, 8, 9, 10, 11, 12},
                             {13, 14, 15, 16, 17, 18},
                             {19, 20, 21, 22, 23, 24},
                             {25, 26, 27, 28, 29, 30},
                             {31, 32, 33, 34, 35, 36}};
-
+                            
+    cout << "{";
     for (int i = 0; i < 6; i++) {
-    cout << "{{";
+    cout << "{";
     for (int j = 0; j < 6; j++) {
         cout << final_data[i][j];
         if (j < 5) {
@@ -53,7 +55,7 @@ int main(){
     }
     cout << "}";
     if (i < 5) {
-        cout << ",";
+        cout << ","<<endl;
     }
     }
     cout << "}" << endl;
@@ -63,7 +65,7 @@ int main(){
     cout<<"final_data(in matrix form): "<<endl;
     for(int i=0;i<6;i++) {
         for(int j=0;j<6;j++) {
-            cout<<final_data[i][j]<<" ";
+            cout<<setw(4)<<final_data[i][j]<<" ";
         }
     cout<<endl;
     }
@@ -105,7 +107,8 @@ int main(){
 
 
     //final data
-    outputfile<<"final_data: ";
+    outputfile<<"final_data: "<<endl;
+
     int final_data[6][6]=  {{1, 2, 3, 4, 5, 6},
                             {7, 8, 9, 10, 11, 12},
                             {13, 14, 15, 16, 17, 18},
@@ -113,8 +116,9 @@ int main(){
                             {25, 26, 27, 28, 29, 30},
                             {31, 32, 33, 34, 35, 36}};
 
+    outputfile<<"{";
     for (int i = 0; i < 6; i++) {
-    outputfile << "{{";
+    outputfile << "{";
     for (int j = 0; j < 6; j++) {
         outputfile << final_data[i][j];
         if (j < 5) {
@@ -123,16 +127,17 @@ int main(){
     }
     outputfile << "}";
     if (i < 5) {
-        outputfile << ",";
+        outputfile << ","<<endl;
+    
     }
     }
-    outputfile << "}" << endl;
+    outputfile << "}"<<endl;
     outputfile<<endl;
 
     outputfile<<"final_data(in matrix form):"<<endl;
     for(int i=0;i<6;i++) {
         for(int j=0;j<6;j++) {
-            outputfile<<final_data[i][j]<<" ";
+            outputfile<<setw(4)<<final_data[i][j]<<" ";
         }
     outputfile<<endl;
     }
