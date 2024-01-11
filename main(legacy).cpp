@@ -44,7 +44,7 @@ string file3 = "raw3.txt";
 string outputTxt = "output.txt";
 
 // for output
-bool _toggleClear = 0;              // clean mode
+bool _toggleClear = 1;              // clean mode
 
 int data[6][6] = {{0, 0, 0, 0, 0, 0},
                   {0, 0, 0, 0, 0, 0},
@@ -88,6 +88,29 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
 //----------------------------------------- f e t c h   r a w   d a t a   f i l e s -----------------------------------------------
 
     inputFunc(file1, file2, file3);
+
+    do{
+        string yn;
+        cout << "\nClean Mode? [Y/N]] > ";
+        std::getline(std::cin, yn);
+        if(yn=="Y"||yn=="y"){
+            _toggleClear = 1;
+            cout << "\nClean mode: ON" << endl;
+            break;
+        }
+        else if(yn=="N"||yn=="n"){
+            _toggleClear = 0;
+            cout << "\nClean mode: OFF" << endl;
+            break;
+        }
+        else{
+            cout << "\nNo input given, clean mode off (default)" << endl;
+            break;
+        }
+
+    }
+
+    while(true);
 
     int giveIndex;
     giveIndex = (countContiguousNumbers(file1)-1)/2;            // file contains raw1, it counts the number, so subtract the numbers of number read by 1, xy coordinates are fixed by 2, so divide by 2 to get the number of data sets, in this case, the array index size

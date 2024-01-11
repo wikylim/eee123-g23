@@ -71,6 +71,7 @@ void inputFunc(string& _file1, string& _file2, string& _file3){
     }
     while (true);
 
+
 }
 
 void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
