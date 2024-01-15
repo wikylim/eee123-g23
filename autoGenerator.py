@@ -30,8 +30,8 @@ images = ["C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER 
           "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
           "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
           "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          #"C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
-          #"C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png"
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png",
+          "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/Reference/autoGeneratorFiles/E.png"
           ]
 
 output_path = "C:/Users/User/OneDrive - Universiti Sains Malaysia/USM/SEM1/COMPUTER PROGRAMMING/Assignments & Tutorials/1. MINI PROJECT/code/eee123-g23/generated_table.png"
