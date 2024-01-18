@@ -70,110 +70,6 @@ void inputFunc(string& _file1, string& _file2, string& _file3){
         
     }
     while (true);
-
-
-}
-
-void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
-    for(int i=0;i<rawSize;i++){
-    for(int j=0;j<2;j++){
-        arr1[i][j] = rawArr[i+1][j];             // skip copying (0, 0)
-    }
-}
-}
-
-void _sort(int arr[], int size){
-    for(int i=1;i<size;i++){
-        for(int i=0;i<size-1;i++){
-            if(arr[i]>arr[i+1]){
-                int temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
-            }
-        }
-    }
-}
-
-void sortX(int size, int _data[][2]){
-    for(int i=1;i<size;i++){
-        for(int i=0;i<size-1;i++){
-            if(_data[i+1][0]<_data[i][0]){
-                int tempdata[2];
-                tempdata[0]=_data[i][0];
-                tempdata[1]=_data[i][1];
-
-                _data[i][0]=_data[i+1][0];
-                _data[i][1]=_data[i+1][1];
-    
-                _data[i+1][0]=tempdata[0];
-                _data[i+1][1]=tempdata[1];
-            }
-        }
-    }
-}
-
-void displayDataArray(int size, int _data[][2]){
-    if(size>0){
-        for(int i=0;i<size;i++){
-            for(int j=0;j<2;j++){
-               cout << _data[i][j] << " ";
-            }
-            cout << "\n";
-        }
-    }
-else{cout << "Empty data!" << endl;}
-}
-
-void appendMatrix(int arr[], int size, int xloc, int _data[6][6]){      // (input data, input data, input data, output data)
-//x100A
-//int ycoord1[6] = {0, 0, 0, 0, 0, 0};
-//int ydifference = 1;
-for(int i=0;i<size;i++){
-    //ycoord1[indx]++;
-    if(arr[i]==0){                                 //filter out (0, 0)
-        cout << "EMPTY!!" << endl;
-    }
-    else{
-        int indx = int((round(static_cast<double>(arr[i])/100.0)-1));
-        _data[indx][xloc]++;
-        }
-    }
-}
-
-void displayMatrix(int _data[6][6], string _title, bool toggleClear){
-    cout << "------------- M a t r i x   d a t a   f o r   " << _title << " -------------------\n" << endl;
-    cout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
-    for(int j=0;j<6;j++){
-        if(j<4){
-            cout << "D\t";
-        }
-        else{cout << "R\t";}
-        for(int i=0;i<6;i++){
-            if(_data[j][i]==0 && toggleClear){cout << "\t";}
-            else{cout << _data[j][i] << "\t";}
-        }
-        cout << "\n";
-    }
-    cout << "\n---------------------------------------------------------------------------\n";
-
-}
-
-void setData(int _data[6][6], int target){
-    for(int i=0;i<6;i++){
-        for(int j=0;j<6;j++){
-            if(_data[i][j]!=0){
-                _data[i][j]=target;
-            }
-        }
-    }
-}
-
-void closing(){
-    cout << "\n---------------------------------------------------------------------------\n";
-    cout << "\n";
-    cout << "                       T h a n k   y o u" << endl;
-    cout << "\n                 H a v e   a   g o o d   d a y   : ) \n" << endl;
-    cout << "\n---------------------------------------------------------------------------\n";
 }
 
 int countContiguousNumbers(const string& filename) {
@@ -249,6 +145,122 @@ void extractData(const string& fileName, int array[][2], int count, int maxPoint
     inputFile.close();
 }
 
+//----------------------------------------------------------------------------------------------
+
+void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
+    for(int i=0;i<rawSize;i++){
+    for(int j=0;j<2;j++){
+        arr1[i][j] = rawArr[i+1][j];             // skip copying (0, 0)
+    }
+}
+}
+
+void sortX(int size, int _data[][2]){
+    for(int i=1;i<size;i++){
+        for(int i=0;i<size-1;i++){
+            if(_data[i+1][0]<_data[i][0]){
+                int tempdata[2];
+                tempdata[0]=_data[i][0];
+                tempdata[1]=_data[i][1];
+
+                _data[i][0]=_data[i+1][0];
+                _data[i][1]=_data[i+1][1];
+    
+                _data[i+1][0]=tempdata[0];
+                _data[i+1][1]=tempdata[1];
+            }
+        }
+    }
+}
+
+void _sort(int arr[], int size){
+    for(int i=1;i<size;i++){
+        for(int i=0;i<size-1;i++){
+            if(arr[i]>arr[i+1]){
+                int temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+        }
+    }
+}
+
+void displayDataArray(int size, int _data[][2]){
+    if(size>0){
+        for(int i=0;i<size;i++){
+            for(int j=0;j<2;j++){
+               cout << _data[i][j] << " ";
+            }
+            cout << "\n";
+        }
+    }
+else{cout << "Empty data!" << endl;}
+}
+
+//----------------------------------------------------------------------------------------------
+
+void appendMatrix(int arr[], int size, int xloc, int _data[6][6]){      // (input data, input data, input data, output data)
+//x100A
+//int ycoord1[6] = {0, 0, 0, 0, 0, 0};
+//int ydifference = 1;
+for(int i=0;i<size;i++){
+    //ycoord1[indx]++;
+    if(arr[i]==0){                                 //filter out (0, 0)
+        cout << "EMPTY!!" << endl;
+    }
+    else{
+        int indx = int((round(static_cast<double>(arr[i])/100.0)-1));
+        _data[indx][xloc]++;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------
+
+void displayMatrix(int _data[6][6], string _title, bool toggleClear){
+    cout << "------------- M a t r i x   d a t a   f o r   " << _title << " -------------------\n" << endl;
+    cout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
+    for(int j=0;j<6;j++){
+        if(j<4){
+            cout << "D\t";
+        }
+        else{cout << "R\t";}
+        for(int i=0;i<6;i++){
+            if(_data[j][i]==0 && toggleClear){cout << "\t";}
+            else{cout << _data[j][i] << "\t";}
+        }
+        cout << "\n";
+    }
+    cout << "\n---------------------------------------------------------------------------\n";
+
+}
+
+void setData(int _data[6][6], int target){
+    for(int i=0;i<6;i++){
+        for(int j=0;j<6;j++){
+            if(_data[i][j]!=0){
+                _data[i][j]=target;
+            }
+        }
+    }
+}
+
+void closing(){
+    cout << "\n---------------------------------------------------------------------------\n";
+    cout << "\n";
+    cout << "                       T h a n k   y o u" << endl;
+    cout << "\n                 H a v e   a   g o o d   d a y   : ) \n" << endl;
+    cout << "\n---------------------------------------------------------------------------\n";
+}
+
+//----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+/*
 void writeDataToFile(const char* fileName, int _data[][6]) {
     // Open the file
     std::ofstream outputFile(fileName);
@@ -270,6 +282,7 @@ void writeDataToFile(const char* fileName, int _data[][6]) {
     // Close the file
     outputFile.close();
 }
+*/
 
 
 /*

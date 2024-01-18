@@ -24,13 +24,11 @@
 #endif                                                  //DO NOT EDIT OR REMOVE
 
 #include <iomanip>
-//#include <algorithm>
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <fstream>
 #include <ctime>
-#include <iomanip>
 #include "functions.hpp"
 
 #define cout std::cout
@@ -88,7 +86,6 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
     // s t a r t   h e r e . . .
 
 //----------------------------------------- f e t c h   r a w   d a t a   f i l e s -----------------------------------------------
-
     inputFunc(file1, file2, file3);
 
     do{
@@ -109,15 +106,13 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
             cout << "\nNo input given, clean mode off (default)" << endl;
             break;
         }
-
     }
-
     while(true);
 
     int giveIndex;
-    giveIndex = (countContiguousNumbers(file1)-1)/2;            // file contains raw1, it counts the number, so subtract the numbers of number read by 1, xy coordinates are fixed by 2, so divide by 2 to get the number of data sets, in this case, the array index size
-    int data1_Index = giveIndex;
-    //cout << "give Index 1 : " << giveIndex << endl;
+    giveIndex = (countContiguousNumbers(file1)-1)/2; // file contains raw1, it counts the number, so subtract the numbers of number read by 1, 
+    int data1_Index = giveIndex;                       // xy coordinates are fixed by 2, so divide by 2 to get the number of data sets, 
+    //cout << "give Index 1 : " << giveIndex << endl;   // in this case, the array index size
     int raw1[giveIndex][2];
     int count1 = 0;
     // Extract data from raw1.txt
@@ -138,8 +133,7 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
     int count3 = 0;    
     // Extract data from raw3.txt
     extractData(file3, raw3, count3, giveIndex);
-
-//----------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 //---------------------- P r o c e s s   &   a p p e n d   r a w   d a t a -------------------------------
 //int data1_Index = sizeof(raw1) / sizeof(raw1[0]);              // manually get dimension1 index size
@@ -166,7 +160,7 @@ data1_Index--;                                                  // after removin
 data2_Index--;                                                  // after removing (0, 0), decrease the size of array by 1
 data3_Index--;                                                  // after removing (0, 0), decrease the size of array by 1
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -299,7 +293,7 @@ if(data3_Index>0){                                          // not empty set
 }
 else{cout << "Empty data! No coordinates found!" << endl;}
 cout << "-------------------------------------------------------------\n" << endl;
-//-------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -312,24 +306,24 @@ int x400A[xcoord1[3]] = {0};
 int x500A[xcoord1[4]] = {0};
 int x600A[xcoord1[5]] = {0};
 if(data1_Index>0){
-for(int i=0;i<xcoord1[0];i++){
-    x100A[i]=data1[i][1];
-}
-for(int i=0;i<xcoord1[1];i++){
-    x200A[i]=data1[i+xcoord1[0]][1];
-}
-for(int i=0;i<xcoord1[2];i++){
-    x300A[i]=data1[i+xcoord1[0]+xcoord1[1]][1];
-}
-for(int i=0;i<xcoord1[3];i++){
-    x400A[i]=data1[i+xcoord1[0]+xcoord1[1]+xcoord1[2]][1];
-}
-for(int i=0;i<xcoord1[4];i++){
-    x500A[i]=data1[i+xcoord1[0]+xcoord1[1]+xcoord1[2]+xcoord1[3]][1];
-}
-for(int i=0;i<xcoord1[5];i++){
-    x600A[i]=data1[i+xcoord1[0]+xcoord1[1]+xcoord1[2]+xcoord1[3]+xcoord1[4]][1];
-}
+    for(int i=0;i<xcoord1[0];i++){
+        x100A[i]=data1[i][1];
+    }
+    for(int i=0;i<xcoord1[1];i++){
+        x200A[i]=data1[i+xcoord1[0]][1];
+    }
+    for(int i=0;i<xcoord1[2];i++){
+        x300A[i]=data1[i+xcoord1[0]+xcoord1[1]][1];
+    }
+    for(int i=0;i<xcoord1[3];i++){
+        x400A[i]=data1[i+xcoord1[0]+xcoord1[1]+xcoord1[2]][1];
+    }
+    for(int i=0;i<xcoord1[4];i++){
+        x500A[i]=data1[i+xcoord1[0]+xcoord1[1]+xcoord1[2]+xcoord1[3]][1];
+    }
+    for(int i=0;i<xcoord1[5];i++){
+        x600A[i]=data1[i+xcoord1[0]+xcoord1[1]+xcoord1[2]+xcoord1[3]+xcoord1[4]][1];
+    }
 }
 
 int x100B[xcoord2[0]] = {0};
@@ -339,24 +333,24 @@ int x400B[xcoord2[3]] = {0};
 int x500B[xcoord2[4]] = {0};
 int x600B[xcoord2[5]] = {0};
 if(data2_Index>0){
-for(int i=0;i<xcoord2[0];i++){
-    x100B[i]=data2[i][1];
-}
-for(int i=0;i<xcoord2[1];i++){
-    x200B[i]=data2[i+xcoord2[0]][1];
-}
-for(int i=0;i<xcoord2[2];i++){
-    x300B[i]=data2[i+xcoord2[0]+xcoord2[1]][1];
-}
-for(int i=0;i<xcoord2[3];i++){
-    x400B[i]=data2[i+xcoord2[0]+xcoord2[1]+xcoord2[2]][1];
-}
-for(int i=0;i<xcoord2[4];i++){
-    x500B[i]=data2[i+xcoord2[0]+xcoord2[1]+xcoord2[2]+xcoord2[3]][1];
-}
-for(int i=0;i<xcoord2[5];i++){
-    x600B[i]=data2[i+xcoord2[0]+xcoord2[1]+xcoord2[2]+xcoord2[3]+xcoord2[4]][1];
-}
+    for(int i=0;i<xcoord2[0];i++){
+        x100B[i]=data2[i][1];
+    }
+    for(int i=0;i<xcoord2[1];i++){
+        x200B[i]=data2[i+xcoord2[0]][1];
+    }
+    for(int i=0;i<xcoord2[2];i++){
+        x300B[i]=data2[i+xcoord2[0]+xcoord2[1]][1];
+    }
+    for(int i=0;i<xcoord2[3];i++){
+        x400B[i]=data2[i+xcoord2[0]+xcoord2[1]+xcoord2[2]][1];
+    }
+    for(int i=0;i<xcoord2[4];i++){
+        x500B[i]=data2[i+xcoord2[0]+xcoord2[1]+xcoord2[2]+xcoord2[3]][1];
+    }
+    for(int i=0;i<xcoord2[5];i++){
+        x600B[i]=data2[i+xcoord2[0]+xcoord2[1]+xcoord2[2]+xcoord2[3]+xcoord2[4]][1];
+    }
 }
 
 int x100C[xcoord3[0]] = {0};
@@ -366,27 +360,27 @@ int x400C[xcoord3[3]] = {0};
 int x500C[xcoord3[4]] = {0};
 int x600C[xcoord3[5]] = {0};
 if(data3_Index>0){
-for(int i=0;i<xcoord3[0];i++){
-    x100C[i]=data3[i][1];
-}
-for(int i=0;i<xcoord3[1];i++){
-    x200C[i]=data3[i+xcoord3[0]][1];
-}
-for(int i=0;i<xcoord3[2];i++){
-    x300C[i]=data3[i+xcoord3[0]+xcoord3[1]][1];
-}
-for(int i=0;i<xcoord3[3];i++){
-    x400C[i]=data3[i+xcoord3[0]+xcoord3[1]+xcoord3[2]][1];
-}
-for(int i=0;i<xcoord3[4];i++){
-    x500C[i]=data3[i+xcoord3[0]+xcoord3[1]+xcoord3[2]+xcoord3[3]][1];
-}
-for(int i=0;i<xcoord3[5];i++){
-    x600C[i]=data3[i+xcoord3[0]+xcoord3[1]+xcoord3[2]+xcoord3[3]+xcoord3[4]][1];
-}
+    for(int i=0;i<xcoord3[0];i++){
+        x100C[i]=data3[i][1];
+    }
+    for(int i=0;i<xcoord3[1];i++){
+        x200C[i]=data3[i+xcoord3[0]][1];
+    }
+    for(int i=0;i<xcoord3[2];i++){
+        x300C[i]=data3[i+xcoord3[0]+xcoord3[1]][1];
+    }
+    for(int i=0;i<xcoord3[3];i++){
+        x400C[i]=data3[i+xcoord3[0]+xcoord3[1]+xcoord3[2]][1];
+    }
+    for(int i=0;i<xcoord3[4];i++){
+        x500C[i]=data3[i+xcoord3[0]+xcoord3[1]+xcoord3[2]+xcoord3[3]][1];
+    }
+    for(int i=0;i<xcoord3[5];i++){
+        x600C[i]=data3[i+xcoord3[0]+xcoord3[1]+xcoord3[2]+xcoord3[3]+xcoord3[4]][1];
+    }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -525,9 +519,10 @@ cout << "\nx600C: ";
 for(int i=0;i<xcoord3[5];i++){
     cout << x600C[i] << " ";
 }
-//------------------------------------------------------------------------------------------------------------------
 
-//------------------------------ D i s p l a y   m a t r i x   d a t a   i n    t e r m i n a l ----------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------ D i s p l a y   m a t r i x   d a t a   i n    t e r m i n a l ----------------------------------------------------
 cout << "\n\n";
 displayMatrix(dataA, "R a w   1", 1);
 displayMatrix(dataB, "R a w   2", 1);
@@ -548,7 +543,9 @@ for(int i=0;i<6;i++){
 
 displayMatrix(data, "F i n a l", 1);
 
-//------------------------------------ O u t p u t   f i l e   r e p o r t   g e n e r a t o r -------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------ O u t p u t   f i l e   r e p o r t   g e n e r a t o r -----------------------------------------------------
     std::ofstream outputFile(outputTxt);
     std::ifstream sourceFile1(file1);
     std::ifstream sourceFile2(file2);
