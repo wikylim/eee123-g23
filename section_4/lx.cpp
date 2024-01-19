@@ -14,29 +14,42 @@ int main(){
 
     //sorted data
     cout<<"sort..."<<endl;
-
     cout<<"sorted_data1: ";
+    cout<<"{";
     int sorted_data1[3]={1,2,3};
     for(int i=0;i<3;i++){
-        std::cout<<sorted_data1[i]<<" ";
+        std::cout<<sorted_data1[i];
+        if (i<2){
+            cout<<", ";
+        }
     }
-        cout<<endl;
+        cout<<"}"<<endl;
+        
         cout<<"sorted_data2: ";
+        cout<<"{";
     int sorted_data2[3]={4,5,6};
     for(int i=0;i<3;i++){
-        std::cout<<sorted_data2[i]<<" ";
+        std::cout<<sorted_data2[i];
+        if (i<2){
+            cout<<", ";
+        }
     }
-        cout<<endl;
+        cout<<"}"<<endl;
     cout<<"sorted_data3: ";
+    cout<<"{";
     int sorted_data3[3]={7,8,9};
     for(int i=0;i<3;i++){
-        std::cout<<sorted_data3[i]<<" ";
+        std::cout<<sorted_data3[i];
+        if (i<2){
+            cout<<", ";
+        }
     }
-        cout<<endl;
+        cout<<"}"<<endl;
         cout<<endl;
 
 //final data
     cout<<"final_data: "<<endl;
+    cout<<"{"<<endl;
     int final_data[6][6]=  {{1, 2, 3, 4, 5, 6},
                             {7, 8, 9, 10, 11, 12},
                             {13, 14, 15, 16, 17, 18},
@@ -44,11 +57,10 @@ int main(){
                             {25, 26, 27, 28, 29, 30},
                             {31, 32, 33, 34, 35, 36}};
                             
-    cout << "{";
     for (int i = 0; i < 6; i++) {
-    cout << "{";
+    cout << "   {";
     for (int j = 0; j < 6; j++) {
-        cout << final_data[i][j];
+        cout << setw(2)<<final_data[i][j];
         if (j < 5) {
             cout << ", ";
         }
@@ -58,6 +70,7 @@ int main(){
         cout << ","<<endl;
     }
     }
+    cout<<endl;
     cout << "}" << endl;
         cout<<endl;
     
@@ -69,8 +82,6 @@ int main(){
         }
     cout<<endl;
     }
-
-
 
 
 //outputfile
@@ -86,29 +97,48 @@ int main(){
     //sorted data
     outputfile<<"sort..."<<endl;
     outputfile<<"sorted_data1: ";
+    outputfile<<"{";
     int sorted_data1[3]={1,2,3};
     for(int i=0;i<3;i++){
-        outputfile<<sorted_data1[i]<<" ";
+        outputfile<<sorted_data1[i];
+        if (i<2) {
+            outputfile<<", ";
+        }
     }
+        outputfile<<"}";
         outputfile<<endl;
+        
+
         outputfile<<"sorted_data2: ";
+        outputfile<<"{";
     int sorted_data2[3]={4,5,6};
     for(int i=0;i<3;i++){
-        outputfile<<sorted_data2[i]<<" ";
+        outputfile<<sorted_data2[i];
+        if (i<2) {
+            outputfile<<", ";
+        }
     }
+    outputfile<<"}";
+
         outputfile<<endl;
     outputfile<<"sorted_data3: ";
+    outputfile<<"{";
     int sorted_data3[3]={7,8,9};
     for(int i=0;i<3;i++){
-        outputfile<<sorted_data3[i]<<" ";
+        outputfile<<sorted_data3[i];   
+        if (i<2) {
+            outputfile<<", ";
+        }
     }
+    outputfile<<"}";
+
     outputfile<<endl;
     outputfile<<endl;
 
-
+    outputfile<<"___________________________________Final output____________________________________________________"<<endl;
     //final data
     outputfile<<"final_data: "<<endl;
-
+    outputfile<<"{"<<endl;
     int final_data[6][6]=  {{1, 2, 3, 4, 5, 6},
                             {7, 8, 9, 10, 11, 12},
                             {13, 14, 15, 16, 17, 18},
@@ -116,11 +146,10 @@ int main(){
                             {25, 26, 27, 28, 29, 30},
                             {31, 32, 33, 34, 35, 36}};
 
-    outputfile<<"{";
     for (int i = 0; i < 6; i++) {
-    outputfile << "{";
+    outputfile << " {";
     for (int j = 0; j < 6; j++) {
-        outputfile << final_data[i][j];
+        outputfile << setw(2)<<final_data[i][j];
         if (j < 5) {
             outputfile << ", ";
         }
@@ -131,17 +160,21 @@ int main(){
     
     }
     }
+    outputfile<<endl;
     outputfile << "}"<<endl;
     outputfile<<endl;
 
     outputfile<<"final_data(in matrix form):"<<endl;
+    outputfile<<"_____________________________"<<endl;
+    outputfile<<"  R1   R2   R3   R4   R5   R6  "<<endl;
+    
     for(int i=0;i<6;i++) {
         for(int j=0;j<6;j++) {
             outputfile<<setw(4)<<final_data[i][j]<<" ";
         }
     outputfile<<endl;
     }
-    outputfile<<endl;
+    outputfile<<"_____________________________"<<endl;
 
 //close output.txt
     outputfile.close();
