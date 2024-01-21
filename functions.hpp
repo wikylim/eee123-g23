@@ -157,17 +157,17 @@ void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
 
 void sortX(int size, int _data[][2]){
     for(int i=1;i<size;i++){
-        for(int i=0;i<size-1;i++){
-            if(_data[i+1][0]<_data[i][0]){
+        for(int j=0;j<size-1;j++){
+            if(_data[j+1][0]<_data[j][0]){
                 int tempdata[2];
-                tempdata[0]=_data[i][0];
-                tempdata[1]=_data[i][1];
+                tempdata[0]=_data[j][0];
+                tempdata[1]=_data[j][1];
 
-                _data[i][0]=_data[i+1][0];
-                _data[i][1]=_data[i+1][1];
+                _data[j][0]=_data[j+1][0];
+                _data[j][1]=_data[j+1][1];
     
-                _data[i+1][0]=tempdata[0];
-                _data[i+1][1]=tempdata[1];
+                _data[j+1][0]=tempdata[0];
+                _data[j+1][1]=tempdata[1];
             }
         }
     }
@@ -175,11 +175,11 @@ void sortX(int size, int _data[][2]){
 
 void _sort(int arr[], int size){
     for(int i=1;i<size;i++){
-        for(int i=0;i<size-1;i++){
-            if(arr[i]>arr[i+1]){
-                int temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
+        for(int j=0;j<size-1;j++){
+            if(arr[j]>arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
             }
         }
     }
