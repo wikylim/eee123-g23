@@ -59,7 +59,7 @@ const int threshold = 30;
 string file1 = "raw1.txt";
 string file2 = "raw2.txt";
 string file3 = "raw3.txt";
-string outputTxt = "output_struct.txt";
+string outputTxt = "output_v4.txt";
 
 // for output
 bool _toggleClear = 1;              // clean mode
