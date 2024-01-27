@@ -2,11 +2,26 @@
     
     GROUP:      23
     TITLE:      Tabular Image Data to Matrix Data Converter (for OpenCV purposes)
-    REVISION:   0
+    VERSION:    (2) Basic
+    REVISION:   2.37 STABLE
 
-    MEMBERS DETAIL
-    ROLES
-
+    MEMBERS DETAIL                          MATRIC      ROLES       EMAIL                                   CONTACT
+    1	LIM WIKY	                        22305415	1, 2, 6	    wikylim@student.usm.my	                018 262 4913
+    2	LIM XING	                        22301447	5	        limxing30@student.usm.my	            017-4545260
+    3	MOHAMAD AYDIN BIN MOHD GHAZALI	    22300017	2,3	        aydin.ghaz@student.usm.my	
+    4	AEESHA ERINA BINTI DAUD	            22301711	5	        aeeshaerina@student.usm.my	            010-6688767
+    5	EDWARD EE JIN HAO 	                22301440	3, 4	    edwardeejinhao@student.usm.my	        012-4447831
+    6	LEE WEI XIAN	                    22302757	4	        leeweixian5561@student.usm.my	        017-4252634
+    
+    ROLES                               TYPE            DESCRIPTION
+    1	Problem & solution seeker	    Overlooker	    Generate problem statement, propose method flow, prepare preliminary data				
+    2	[Section 1] Input data	        Algorithm	    Propose solution and write code for inputting/sourcing data from .txt file data sets				
+    3	[Section 2] Sorter	            Algorithm	    Propose solution and write code for sorting the (x, y) coordinate in array 				
+    4	[Section 3] Converter	        Algorithm	    Propose solution and write code for converting sorted data into matrix form				
+    5	[Section 4] Output	            Algorithm	    Propose solution and write code for displaying raw data, processed data and final data in terminal (final data in matrix form), output .txt file				
+    6	Juice mixer	                    Algorithm	    Adjust, fix and combine all the codes (Section 1 to 4) into one main code				
+    7	[Section 5] OpenCV (optional)	Algorithm	    Write code for openCV template matching				
+    8	Tester	                        Tester	        Code inspection, test and validate code functionality				
 
 
 

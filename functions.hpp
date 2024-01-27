@@ -185,6 +185,16 @@ void _sort(int arr[], int size){
     }
 }
 
+void vectorSort(vector<int>& arr, int size) {
+    for(int i = 1;i<size;i++) {
+        for (int j=0;j<size-1;j++) {
+            if (arr[j]>arr[j+1]) {
+                std::swap(arr[j],arr[j+1]);
+            }
+        }
+    }
+}
+
 void displayDataArray(int size, int _data[][2]){
     if(size>0){
         for(int i=0;i<size;i++){
@@ -211,6 +221,21 @@ for(int i=0;i<size;i++){
     else{
         int indx = int((round(static_cast<double>(arr[i])/100.0)-1));
         _data[indx][xloc]++;
+        }
+    }
+}
+
+void vectorappendMatrix(const vector<int>& arr, int size, int xloc, int _data[6][6]) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == 0) {
+            cout << "EMPTY!!" << endl;
+        } else {
+            int indx = int((round(static_cast<double>(arr[i]) / 100.0) - 1));
+            if (indx >= 0 && indx < 6) { // Check if indx is within bounds
+                _data[indx][xloc]++;
+            } else {
+                cout << "Index out of bounds: " << indx << endl;
+            }
         }
     }
 }
