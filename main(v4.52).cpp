@@ -117,7 +117,7 @@ int main(int argc, char* const argv[]){                 //DO NOT EDIT OR REMOVE
 
     do{
         string yn;
-        cout << "\nClean Mode? [Y/N]] > ";
+        cout << "\nClean Mode? [Y/N] > ";
         std::getline(std::cin, yn);
         if(yn=="Y"||yn=="y"){
             _toggleClear = 1;
