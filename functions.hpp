@@ -12,6 +12,7 @@
 #define vector std::vector
 
 string location;
+string version = "v4.52 Vectorstruct";
 
 /*void _sort(int arr[], int size);
 void appendMatrix(int arr[], int size, int xloc, int _data[6][6]);
@@ -32,6 +33,12 @@ int getIndex(int(&array)[Rows][Cols]){
 void inputFunc(string& _file1, string& _file2, string& _file3)      // Service prompt for user input data location
 {
     string filePath;
+    cout << "\n-----------------------------------------------------------------\n";
+    cout << "\n";
+    cout << "                   W E L C O M E\n" << endl;
+    cout << "  T a b u l a r   d a t a   t o   m a t r i x   c o n v e r t e r\n" << endl;
+    cout << "\nVersion: " << version;
+    cout << "\n-----------------------------------------------------------------\n";
 
     cout << "\nPlease enter reference folder location.\n\nEg : \"C:\\This PC\\EEE\\Reference\\Set 5\"";
     do {
