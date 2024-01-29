@@ -3,7 +3,7 @@
     GROUP:      23
     TITLE:      Tabular Image Data to Matrix Data Converter (for OpenCV purposes)
     VERSION:    (4) Vectorstruct
-    REVISION:   4.52
+    REVISION:   4.55
 
     MEMBERS DETAIL                          MATRIC          ROLES       EMAIL                                   CONTACT
     1	LIM WIKY	                        22305415	    1, 2, 6	    wikylim@student.usm.my	                018 262 4913
