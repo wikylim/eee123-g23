@@ -14,20 +14,21 @@
     6	LEE WEI XIAN	                    22302757	    4	        leeweixian5561@student.usm.my	        017-4252634
     
     ROLES                                   TYPE            DESCRIPTION
-    1	    Problem & solution seeker	    Overlooker	    Generate problem statement, propose method flow, prepare preliminary data				
-    2	    [Section 1] Input data	        Algorithm	    Propose solution and write code for inputting/sourcing data from .txt file data sets				
-    3	    [Section 2] Sorter	            Algorithm	    Propose solution and write code for sorting the (x, y) coordinate in array 				
-    4	    [Section 3] Converter	        Algorithm	    Propose solution and write code for converting sorted data into matrix form				
-    5	    [Section 4] Output	            Algorithm	    Propose solution and write code for displaying raw data, processed data and final data in terminal (final data in matrix form), output .txt file				
-    6	    Juice mixer	                    Algorithm	    Adjust, fix and combine all the codes (Section 1 to 4) into one main code				
-    7	    [Section 5] OpenCV (optional)	Algorithm	    Write code for openCV template matching				
-    8	    Tester	                        Tester	        Code inspection, test and validate code functionality				
+    1   Problem & solution seeker	        Overlooker	    Generate problem statement, propose method flow, prepare preliminary data				
+    2   [Section 1] Input data	            Algorithm	    Propose solution and write code for inputting/sourcing data from .txt file data sets				
+    3   [Section 2] Sorter	                Algorithm	    Propose solution and write code for sorting the (x, y) coordinate in array 				
+    4   [Section 3] Converter	            Algorithm	    Propose solution and write code for converting sorted data into matrix form				
+    5   [Section 4] Output	                Algorithm	    Propose solution and write code for displaying raw data, processed data and final data in terminal (final data in matrix form), output .txt file				
+    6   Juice mixer	                        Algorithm	    Adjust, fix and combine all the codes (Section 1 to 4) into one main code				
+    7   [Section 5] OpenCV (optional)	    Algorithm	    Write code for openCV template matching				
+    8   Tester	                            Tester	        Code inspection, test and validate code functionality				
 
 
 
     limitations of code:
     - using file contents with the format " raw1>> [{0, 0}, {0, 0}, {0, 0}, ... {0, 0}]", any changes of the format of the input files will result in error of code
     - works within the coordinates (x, y) = (100, 100) to (600, 600)
+    - size of data index must be according to raw data and accurate
 
 */
 
@@ -169,8 +170,7 @@ int dataV3[data3.dataIndex][2];                                      // declarin
 copyData(dataV3, data3.dataIndex, raw3);
 data3.dataIndex--;                                                  // after removing (0, 0), decrease the size of array by 1
 
-
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -189,7 +189,6 @@ cout << "\n";
 
 
 
-
 //------------------------------------ D i s p l a y   d a t a   a r r a y -------------------------------------------
 cout << "\n>data1" << endl;
 displayDataArray(data1.dataIndex, dataV1);
@@ -202,7 +201,6 @@ displayDataArray(data3.dataIndex, dataV3);
 
 cout << "\n";
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 
@@ -292,6 +290,7 @@ if(data3.dataIndex>0){                                          // not empty set
 else{cout << "Empty data! No coordinates found!" << endl;}
 cout << "-------------------------------------------------------------\n" << endl;
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -522,7 +521,7 @@ displayMatrix(data, "F i n a l", 1);
     oout << "-----------------------------------------------------------------\n" << endl;
 
     if(data2.dataIndex>0){
-    oout << "---------------------- R E P O R T   2 ----------------------" << endl;
+    oout << "---------------------- R E P O R T   2 --------------------------" << endl;
     oout << "number of indexes found: " << data2.dataIndex << endl;
     oout << "[\t";
     for(int i=0;i<6;i++){
@@ -534,7 +533,7 @@ displayMatrix(data, "F i n a l", 1);
     oout << "-----------------------------------------------------------------\n" << endl;
 
     if(data3.dataIndex>0){
-    oout << "---------------------- R E P O R T   3 ----------------------" << endl;
+    oout << "---------------------- R E P O R T   3 --------------------------" << endl;
     oout << "number of indexes found: " << data3.dataIndex << endl;
     oout << "[\t";
     for(int i=0;i<6;i++){

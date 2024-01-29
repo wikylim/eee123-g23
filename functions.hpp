@@ -226,12 +226,12 @@ for(int i=0;i<size;i++){
 }
 
 void vectorappendMatrix(const vector<int>& arr, int size, int xloc, int _data[6][6]) {
-    for (int i = 0; i < size; i++) {
+    for (int i=0;i<size;i++) {
         if (arr[i] == 0) {
             cout << "EMPTY!!" << endl;
         } else {
-            int indx = int((round(static_cast<double>(arr[i]) / 100.0) - 1));
-            if (indx >= 0 && indx < 6) { // Check if indx is within bounds
+            int indx = int((round(static_cast<double>(arr[i])/100.0)-1));
+            if (indx>=0&&indx<6) { // Check if indx is within bounds
                 _data[indx][xloc]++;
             } else {
                 cout << "Index out of bounds: " << indx << endl;
