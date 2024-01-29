@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <cctype>
+#include <cmath>
 
 #define cout std::cout
 #define endl std::endl
@@ -19,6 +20,8 @@ void copyData(int arr1[][2], int rawSize, int rawArr[][2]);
 void setData(int _data[6][6], int target);
 void closing();*/
 
+
+// Fetch size of index
 template <std::size_t Rows, std::size_t Cols>
 int getIndex(int(&array)[Rows][Cols]){
     return Rows;
@@ -26,7 +29,8 @@ int getIndex(int(&array)[Rows][Cols]){
 
 //----------------------------------------------------------------------------------------------
 
-void inputFunc(string& _file1, string& _file2, string& _file3){
+void inputFunc(string& _file1, string& _file2, string& _file3)      // Service prompt for user input data location
+{
     string filePath;
 
     cout << "\nPlease enter reference folder location.\n\nEg : \"C:\\This PC\\EEE\\Reference\\Set 5\"";
@@ -72,7 +76,8 @@ void inputFunc(string& _file1, string& _file2, string& _file3){
     while (true);
 }
 
-int countContiguousNumbers(const string& filename) {
+int countContiguousNumbers(const string& filename)                  // Counts number of coordinate data sets
+{
     std::ifstream inputFile(filename);
 
     if (!inputFile.is_open()) {
@@ -101,7 +106,8 @@ int countContiguousNumbers(const string& filename) {
     return count;
 }
 
-void extractData(const string& fileName, int array[][2], int count, int maxPoints) {
+void extractData(const string& fileName, int array[][2], int count, int maxPoints) // Extracts Raw data content to local variable
+{
     // Open the file
     std::ifstream inputFile(fileName);
 
@@ -147,7 +153,8 @@ void extractData(const string& fileName, int array[][2], int count, int maxPoint
 
 //----------------------------------------------------------------------------------------------
 
-void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
+void copyData(int arr1[][2], int rawSize, int rawArr[][2])  // Copies data content from one array to another
+{
     for(int i=0;i<rawSize;i++){
     for(int j=0;j<2;j++){
         arr1[i][j] = rawArr[i+1][j];             // skip copying (0, 0)
@@ -155,7 +162,8 @@ void copyData(int arr1[][2], int rawSize, int rawArr[][2]){
 }
 }
 
-void sortX(int size, int _data[][2]){
+void sortX(int size, int _data[][2])        // Bubble sort 2D Array
+{
     for(int i=1;i<size;i++){
         for(int j=0;j<size-1;j++){
             if(_data[j+1][0]<_data[j][0]){
@@ -173,7 +181,8 @@ void sortX(int size, int _data[][2]){
     }
 }
 
-void _sort(int arr[], int size){
+void _sort(int arr[], int size)             // Bubble sort 1D Array
+{
     for(int i=1;i<size;i++){
         for(int j=0;j<size-1;j++){
             if(arr[j]>arr[j+1]){
@@ -185,7 +194,8 @@ void _sort(int arr[], int size){
     }
 }
 
-void vectorSort(vector<int>& arr, int size) {
+void vectorSort(vector<int>& arr, int size)     // Bubble sort vector array
+{
     for(int i = 1;i<size;i++) {
         for (int j=0;j<size-1;j++) {
             if (arr[j]>arr[j+1]) {
@@ -195,7 +205,8 @@ void vectorSort(vector<int>& arr, int size) {
     }
 }
 
-void displayDataArray(int size, int _data[][2]){
+void displayDataArray(int size, int _data[][2]) // Displays data from array
+{
     if(size>0){
         for(int i=0;i<size;i++){
             for(int j=0;j<2;j++){
@@ -209,7 +220,9 @@ else{cout << "Empty data!" << endl;}
 
 //----------------------------------------------------------------------------------------------
 
-void appendMatrix(int arr[], int size, int xloc, int _data[6][6]){      // (input data, input data, input data, output data)
+void appendMatrix(int arr[], int size, int xloc, int _data[6][6])   // Appends array data into matrix data
+{      
+// (input data, input data, input data, output data)
 //x100A
 //int ycoord1[6] = {0, 0, 0, 0, 0, 0};
 //int ydifference = 1;
@@ -225,7 +238,8 @@ for(int i=0;i<size;i++){
     }
 }
 
-void vectorappendMatrix(const vector<int>& arr, int size, int xloc, int _data[6][6]) {
+void vectorappendMatrix(const vector<int>& arr, int size, int xloc, int _data[6][6])    // Appends vector data into matrix data
+{
     for (int i=0;i<size;i++) {
         if (arr[i] == 0) {
             cout << "EMPTY!!" << endl;
@@ -242,7 +256,8 @@ void vectorappendMatrix(const vector<int>& arr, int size, int xloc, int _data[6]
 
 //----------------------------------------------------------------------------------------------
 
-void displayMatrix(int _data[6][6], string _title, bool toggleClear){
+void displayMatrix(int _data[6][6], string _title, bool toggleClear)    // Displays data matrix
+{
     cout << "------------- M a t r i x   d a t a   f o r   " << _title << " -------------------\n" << endl;
     cout << "\tR1\tR2\tR3\tR4\tR5\tNS" << endl;
     for(int j=0;j<6;j++){
@@ -260,7 +275,8 @@ void displayMatrix(int _data[6][6], string _title, bool toggleClear){
 
 }
 
-void setData(int _data[6][6], int target){
+void setData(int _data[6][6], int target)       // Sets matrix data to discrete value
+{
     for(int i=0;i<6;i++){
         for(int j=0;j<6;j++){
             if(_data[i][j]!=0){
@@ -270,7 +286,8 @@ void setData(int _data[6][6], int target){
     }
 }
 
-void closing(){
+void closing()    // Closing message
+{
     cout << "\n---------------------------------------------------------------------------\n";
     cout << "\n";
     cout << "                       T h a n k   y o u" << endl;
