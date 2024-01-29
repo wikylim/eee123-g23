@@ -2,8 +2,8 @@
     
     GROUP:      23
     TITLE:      Tabular Image Data to Matrix Data Converter (for OpenCV purposes)
-    REVISION:   0
-
+    REVISION:   4
+    
     MEMBERS DETAIL
     ROLES
 
